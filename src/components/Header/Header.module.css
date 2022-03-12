@@ -1,0 +1,132 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: #f7f7f8;
+  padding: 10px 0;
+  z-index: 1;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.imgHeader {
+  width: 18px;
+  padding: 0px 12px;
+}
+
+.catalogText {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.burgerBlock {
+  display: flex;
+  align-items: center;
+}
+
+.burgerBlock p {
+  margin-left: 10px;
+}
+
+.wrapBurger {
+  display: flex;
+  cursor: pointer;
+}
+
+.burger.open::after {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.burger.open::before {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+.burger.open {
+  height: 0;
+}
+
+.burger {
+  position: relative;
+  border: none;
+  background: black;
+  width: 30px;
+  height: 2px;
+  cursor: pointer;
+  margin: 10px 0;
+  transition: all 0.1s ease;
+}
+
+.burger::after {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: 0;
+  background: black;
+  width: 30px;
+  height: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.burger::before {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: 0;
+  background: black;
+  width: 30px;
+  height: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.userBlock {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.userBlockItem {
+  cursor: pointer;
+}
+
+.userBlock div {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300;
+  margin-right: 10px;
+}
+
+.input {
+  position: absolute;
+  left: 0;
+  border: none;
+  border-bottom: 1px solid #000;
+  background: none;
+  padding: 5px 0;
+  transform: translateX(-100%);
+}
+
+.input:focus {
+  outline: none;
+}
+
+.logo a {
+  font-weight: 300;
+  font-size: 35px;
+  text-decoration: none;
+  color: #000;
+}

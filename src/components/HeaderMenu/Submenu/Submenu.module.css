@@ -1,0 +1,28 @@
+.submenu {
+  width: 100%;
+  background: #fff;
+  padding: 10px 10px;
+  flex: 3;
+}
+
+.submenu ul {
+  list-style: none;
+}
+
+.submenu a {
+  display: block;
+  cursor: pointer;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #000;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.submenu a:hover {
+ color: rgb(97, 170, 97);
+}
+
+.submenuItem {
+  cursor: pointer;
+}

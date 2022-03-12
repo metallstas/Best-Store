@@ -1,0 +1,21 @@
+.cardMain {
+  margin: 0px 15px;
+  width: min-content;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardMain img {
+  width: 200px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.price {
+  font-size: 25px;
+}

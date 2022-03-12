@@ -1,0 +1,66 @@
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+import {
+  activeCategory,
+  textCategory,
+} from '../../redux/actions/categoriesAction'
+import {
+  fetchProductsCategory,
+  setIdProduct,
+} from '../../redux/actions/productCategoryAction'
+import { IProduct } from '../../redux/redusers/productsCategoryReducer'
+import { IState } from '../../redux/store'
+import cls from './Products.module.css'
+import { CardProduct } from '../CardProduct/CardProduct'
+import { Loading } from '../Loading/Loading'
+
+export const Products = ({ category }: any) => {
+  const products = useSelector(
+    (state: IState) => state.productsCategoryReducer.products
+  )
+  const activeCategoryText = useSelector(
+    (state: IState) => state.categoriesReducer.activeCategory
+  )
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchProductsCategory(category))
+    dispatch(activeCategory(category))
+  }, [])
+
+  const onMouseOverCard = (id: number) => {
+    dispatch(setIdProduct(id))
+  }
+
+  return (
+    <div className={cls.productsWrapper}>
+      <div className={cls.container}>
+        <div className={cls.naviBlock}>
+          <NavLink to='/'>Главная &#62;</NavLink>
+          <span className={cls.activeCategory}>
+            {textCategory(activeCategoryText)}
+          </span>
+        </div>
+
+        <div className={cls.wrapper}>
+          {products ? (
+            products.map((item: IProduct) => {
+              return (
+                <CardProduct
+                  key={item.id}
+                  product={item}
+                  onMouseOver={(e) => {
+                    onMouseOverCard(+e.currentTarget.id)
+                  }}
+                />
+              )
+            })
+          ) : (
+            <Loading />
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
