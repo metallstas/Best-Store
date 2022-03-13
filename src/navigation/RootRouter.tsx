@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { CardItem } from '../components/CradItem/CardItem'
 import { Header } from '../components/Header/Header'
 import {Main} from '../components/Main/Main'
 import { Products } from '../components/Products/Products'
@@ -14,6 +15,9 @@ export const RootRouter = () => {
         <Route path='/' exact>
           <Main />
         </Route>
+        <Route path='/searchText' exact>
+          <Products />
+        </Route>
         <Route path='/electronics' exact>
           <Products category='electronics' />
         </Route>
@@ -25,6 +29,9 @@ export const RootRouter = () => {
         </Route>
         <Route path="/women's clothing" exact>
           <Products category="women's clothing"/>
+        </Route>
+        <Route path='/electronics/hdd/:id' exact>
+          <CardItem />
         </Route>
          <Route path='/electronics/hdd' exact>
           <ProductSubmenu category='electronics' textSubmenu='hdd' />
@@ -45,7 +52,7 @@ export const RootRouter = () => {
           <ProductSubmenu category="men's clothing" textSubmenu='T-shirts' />
         </Route>
         <Route path="/men's clothing/jackets" exact>
-          <ProductSubmenu category="men's clothing" textSubmenu='jacket' />
+          <ProductSubmenu category="men's clothing" textSubmenu='jackets' />
         </Route>
         <Route path="/men's clothing/bags" exact>
           <ProductSubmenu category="men's clothing" textSubmenu='bags' />
@@ -54,7 +61,7 @@ export const RootRouter = () => {
           <ProductSubmenu category="women's clothing" textSubmenu='T-shirts' />
         </Route>
         <Route path="/women's clothing/jackets" exact>
-          <ProductSubmenu category="women's clothing" textSubmenu='jacket' />
+          <ProductSubmenu category="women's clothing" textSubmenu='jackets' />
         </Route>
       </Switch>
     </BrowserRouter>

@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import {
   activeCategory,
   textCategory,
 } from '../../redux/actions/categoriesAction'
 import {
   fetchProductsCategory,
+  fetchSearchProducts,
   setIdProduct,
 } from '../../redux/actions/productCategoryAction'
 import { IProduct } from '../../redux/redusers/productsCategoryReducer'
@@ -14,19 +15,30 @@ import { IState } from '../../redux/store'
 import cls from './Products.module.css'
 import { CardProduct } from '../CardProduct/CardProduct'
 import { Loading } from '../Loading/Loading'
+import { closeMenu } from '../../redux/actions/headeAction'
 
-export const Products = ({ category }: any) => {
+interface IProducts {
+  category?: string
+}
+
+export const Products = ({ category }: IProducts) => {
   const products = useSelector(
     (state: IState) => state.productsCategoryReducer.products
   )
+  const text = useSelector(
+    (state: IState) => state.productsCategoryReducer.searchText
+  )
+
   const activeCategoryText = useSelector(
     (state: IState) => state.categoriesReducer.activeCategory
   )
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchProductsCategory(category))
-    dispatch(activeCategory(category))
+    if (category) {
+      dispatch(fetchProductsCategory(category))
+      dispatch(activeCategory(category))
+    }
   }, [])
 
   const onMouseOverCard = (id: number) => {
@@ -37,7 +49,7 @@ export const Products = ({ category }: any) => {
     <div className={cls.productsWrapper}>
       <div className={cls.container}>
         <div className={cls.naviBlock}>
-          <NavLink to='/'>Главная &#62;</NavLink>
+          <NavLink to='/' onClick={() => {dispatch(closeMenu())}}>Главная &#62;</NavLink>
           <span className={cls.activeCategory}>
             {textCategory(activeCategoryText)}
           </span>

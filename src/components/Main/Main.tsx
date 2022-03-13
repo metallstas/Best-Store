@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect, useHistory } from 'react-router-dom'
 import {
   activeCategory,
   fetchCategories,
@@ -31,13 +31,20 @@ export const Main = () => {
     })
   }
 
+  const history = useHistory()
+  const getInfoCategory = (category: string) => {
+    history.push('/' + category)
+  }
+
   useEffect(() => {
     dispatch(fetchCategories())
     dispatch(fetchNewProducts())
+    // dispatch(postProfi())
   }, [])
 
   const handlerCategories = (category: string) => {
     dispatch(activeCategory(category))
+    getInfoCategory(category)
   }
 
   return (
@@ -46,13 +53,11 @@ export const Main = () => {
         <ul>
           {categories.length ? (
             categories.map((item) => {
-              const dataAtribut = { data: item }
               return (
                 <NavLink
                   to={`/${item}`}
                   key={item}
-                  {...dataAtribut}
-                  onClick={() => handlerCategories(dataAtribut.data)}
+                  onClick={() => handlerCategories(item)}
                 >
                   {textCategory(item)}
                 </NavLink>

@@ -1,16 +1,21 @@
-import { SyntheticEvent } from 'react'
-import { useDispatch } from 'react-redux'
+import { SyntheticEvent, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { textCategory } from '../../../redux/actions/categoriesAction'
 import { closeMenu } from '../../../redux/actions/headeAction'
+import { fetchProductSubcategory } from '../../../redux/actions/productCategoryAction'
+import { currenTextSubmenu } from '../../../redux/constans'
+import { IState } from '../../../redux/store'
 import cls from './Submenu.module.css'
 
 interface ISubmenu {
-  text: string
+  textCategory: string
 }
 
-export const Submenu = ({ text }: ISubmenu) => {
+export const Submenu = ({ textCategory }: ISubmenu) => {
   const dispatch = useDispatch()
+  const subcategory = useSelector(
+    (state: IState) => state.productsCategoryReducer.subcategory
+  )
 
   const onClickLink = (e: SyntheticEvent<HTMLUListElement>) => {
     if (e.currentTarget.lastChild?.nodeName === 'A') {
@@ -18,68 +23,29 @@ export const Submenu = ({ text }: ISubmenu) => {
     }
   }
 
+  useEffect(() => {
+    dispatch(fetchProductSubcategory(textCategory))
+  }, [textCategory])
+
   return (
     <div className={cls.submenu}>
       <ul onClick={onClickLink}>
-        {text === '' ? (
+        {!textCategory ? (
           <>
-            <NavLink to={`/${text}/hdd`} exact>
-              Жесткие Диски
-            </NavLink>
-            <NavLink to={`/${text}/ssd`} exact>
-              SSD
-            </NavLink>
-            <NavLink to={`/${text}/tv`} exact>
-              Телевизоры
-            </NavLink>
+            <NavLink to='/electronics/hdd'>Жесткие Диски</NavLink>
+            <NavLink to='/electronics/ssd'>SSD</NavLink>
+            <NavLink to='/electronics/tv'>Телевизоры</NavLink>
           </>
         ) : null}
-        {textCategory(text) === 'Электроника' ? (
-          <>
-            <NavLink to={`/${text}/hdd`} exact>
-              Жесткие Диски
-            </NavLink>
-            <NavLink to={`/${text}/ssd`} exact>
-              SSD
-            </NavLink>
-            <NavLink to={`/${text}/tv`} exact>
-              Телевизоры
-            </NavLink>
-          </>
-        ) : null}
-        {textCategory(text) === 'Украшения' ? (
-          <>
-            <NavLink to={`/${text}/rings`} exact>
-              Кольца
-            </NavLink>
-            <NavLink to={`/${text}/bracelets`} exact>
-              Браслеты
-            </NavLink>
-          </>
-        ) : null}
-        {textCategory(text) === 'Женская одежда' ? (
-          <>
-            <NavLink to={`/${text}/T-shirts`} exact>
-              Майки
-            </NavLink>
-            <NavLink to={`/${text}/jackets`} exact>
-              Куртки
-            </NavLink>
-          </>
-        ) : null}
-        {textCategory(text) === 'Мужская одежда' ? (
-          <>
-            <NavLink to={`/${text}/T-shirts`} exact>
-              Майки
-            </NavLink>
-            <NavLink to={`/${text}/jackets`} exact>
-              Куртки
-            </NavLink>
-            <NavLink to={`/${text}/bags`} exact>
-              Сумки
-            </NavLink>
-          </>
-        ) : null}
+        {subcategory
+          ? subcategory.map((text: string) => {
+              return (
+                <NavLink key={text} to={`/${textCategory}/${text}`}>
+                  {currenTextSubmenu(text)}
+                </NavLink>
+              )
+            })
+          : null}
       </ul>
     </div>
   )

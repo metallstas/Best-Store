@@ -29,7 +29,7 @@ export const HeaderMenu = () => {
                       : `${cls.category}`
                   }
                   onMouseOver={(e) => {
-                    setIdCategory(e.currentTarget.id)
+                    setIdCategory(item)
                   }}
                 >
                   {textCategory(item)}
@@ -38,7 +38,7 @@ export const HeaderMenu = () => {
             })}
           </ul>
         </div>
-        <Submenu text={idCategory} />
+        <Submenu textCategory={idCategory}/>
       </div>
     </div>
   )

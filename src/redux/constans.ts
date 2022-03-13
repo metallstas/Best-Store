@@ -10,6 +10,10 @@ export const ACTIONS = {
   GET_PRODUCT_SUBCATEGORY: 'GET_PRODUCT_SUBCATEGORY',
   SET_ID_PRODUCT: 'SET_ID_PRODUCT',
   NEW_PRODUCTS: 'NEW_PRODUCTS',
+  SEARCH_PRODUCT: 'SEARCH_PRODUCT',
+  SEARCH_TEXT: 'SEARCH_TEXT',
+  SUBCATEGORY: 'SUBCATEGORY',
+  PRODUCT_ID: 'PRODUCT_ID',
 }
 
 export const currenTextSubmenu = (textSubmenu: string) => {
@@ -29,7 +33,7 @@ export const currenTextSubmenu = (textSubmenu: string) => {
     return 'Майки'
   }
 
-  if (textSubmenu === 'jacket') {
+  if (textSubmenu === 'jackets') {
     return 'Куртки'
   }
 

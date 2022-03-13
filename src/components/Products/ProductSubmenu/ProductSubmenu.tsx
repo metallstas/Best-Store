@@ -1,26 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import {
   activeCategory,
   textCategory,
 } from '../../../redux/actions/categoriesAction'
 import {
   clearStateProduct,
-  fetchProductsCategory,
   fetchProductsSubcategory,
   setIdProduct,
 } from '../../../redux/actions/productCategoryAction'
-import {
-  IProductCategory,
-  IProduct,
-} from '../../../redux/redusers/productsCategoryReducer'
+import { IProduct } from '../../../redux/redusers/productsCategoryReducer'
 import { IState } from '../../../redux/store'
-import { Spiner } from '../../Spiner/Spiner'
 import cls from './ProductSubmenu.module.css'
-import { ReactComponent as Logo } from './24037.svg'
 import { currenTextSubmenu } from '../../../redux/constans'
 import { CardProduct } from '../../CardProduct/CardProduct'
+import { Loading } from '../../Loading/Loading'
 
 interface IProductSubmenu {
   textSubmenu: string
@@ -28,12 +23,10 @@ interface IProductSubmenu {
 }
 
 export const ProductSubmenu = ({ textSubmenu, category }: IProductSubmenu) => {
-  const [productId, setProductId] = useState<number>(0)
   const productsSubcategory = useSelector(
     (state: IState) => state.productsCategoryReducer.productsSubcategory
   )
   const dispatch = useDispatch()
-  console.log(productsSubcategory)
 
   useEffect(() => {
     dispatch(clearStateProduct())
@@ -60,7 +53,6 @@ export const ProductSubmenu = ({ textSubmenu, category }: IProductSubmenu) => {
             {currenTextSubmenu(textSubmenu)}
           </span>
         </div>
-
         <div className={cls.wrapper}>
           {productsSubcategory ? (
             productsSubcategory.map((item: IProduct) => {
@@ -73,10 +65,7 @@ export const ProductSubmenu = ({ textSubmenu, category }: IProductSubmenu) => {
               )
             })
           ) : (
-            <div className={cls.loadingBlock}>
-              <Spiner />
-              <p>Loading...</p>
-            </div>
+            <Loading />
           )}
         </div>
       </div>
