@@ -21,6 +21,8 @@ const WRONG_PASSWORD_FORMAT =
 const WRONG_PASSWORD_LENGTH =
   "Пароль должен содержать не менее 8 символов и не более 30 символов";
 const WRONG_REPEATED_PASSWORD = "Пароли не совпадают";
+const WRONG_PHONE_NUMBER_LENGTH = "Номер телефона должен состоять из 7 цифр и кода +375**"
+const WRONG_PHONE_NUMBER = "Номер телефона должен состоять из цифр"
 
 const NOT_ERROR = "";
 
@@ -54,8 +56,12 @@ class ValidationService {
       return REQUIRED_FIELD
     }
 
-    if(Number.isNaN(+numberPhone)) {
-      return 'Введите цифры'
+    if(Number.isNaN(numberPhone)) {
+      return WRONG_PHONE_NUMBER
+    }
+
+    if(numberPhone.length < 13) {
+      return WRONG_PHONE_NUMBER_LENGTH
     }
 
     return NOT_ERROR

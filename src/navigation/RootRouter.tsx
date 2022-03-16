@@ -43,7 +43,7 @@ export const RootRouter = () => {
         <Route path='/jewelery/rings/:id' exact>
           <CardItem />
         </Route>
-        <Route path='/jewelery/bracelets/:id' exact>
+        <Route path='/jewelery/bracelet/:id' exact>
           <CardItem />
         </Route>
         <Route path="/men's clothing/T-shirts/:id" exact>
@@ -73,7 +73,7 @@ export const RootRouter = () => {
         <Route path='/jewelery/rings' exact>
           <ProductSubmenu category='jewelery' textSubmenu='rings' />
         </Route>
-        <Route path='/jewelery/bracelets' exact>
+        <Route path='/jewelery/bracelet' exact>
           <ProductSubmenu category='jewelery' textSubmenu='bracelet' />
         </Route>
         <Route path="/men's clothing/T-shirts" exact>
