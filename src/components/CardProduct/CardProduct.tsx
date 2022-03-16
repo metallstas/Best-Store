@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { IProduct } from '../../redux/redusers/productsCategoryReducer'
 import { IState } from '../../redux/store'
+import { Basket } from '../Basket/Basket'
 import { Spiner } from '../Spiner/Spiner'
 import cls from './CardProduct.module.css'
-import { ReactComponent as Logo } from './favoritesProd.svg'
 
 interface IProductCard {
   product: IProduct
@@ -20,6 +20,7 @@ export const CardProduct = ({ product, onMouseOver }: IProductCard) => {
   const getInfoProduct = (id: string) => {
     history.push(`/${product.category}/${product.subcategory}/${id}`)
   }
+
   return (
     <div
       className={cls.product}
@@ -34,9 +35,8 @@ export const CardProduct = ({ product, onMouseOver }: IProductCard) => {
       <div>
         <p className={cls.price}>{product.price}$</p>
         {product.id === productId ? (
-          <div className={cls.productClicked}>
-            <button>Корзина</button>
-            <Logo className={cls.svg} />
+          <div className={cls.clikedBlock}>
+            <Basket />
           </div>
         ) : null}
       </div>

@@ -9,7 +9,7 @@ import {
 import { fetchNewProducts } from '../../redux/actions/productCategoryAction'
 import { IProduct } from '../../redux/redusers/productsCategoryReducer'
 import { IState } from '../../redux/store'
-import { CardProducMain } from '../CardProductMain/CardProductMain'
+import { CardProductMain } from '../CardProductMain/CardProductMain'
 import { Loading } from '../Loading/Loading'
 import { Spiner } from '../Spiner/Spiner'
 import cls from './Main.module.css'
@@ -26,7 +26,7 @@ export const Main = () => {
   const showNewProducts = (category: string) => {
     return newProduct.products.map((product: IProduct) => {
       if (category === product.category) {
-        return <CardProducMain product={product} key={product.id} />
+        return <CardProductMain product={product} key={product.id} />
       }
     })
   }

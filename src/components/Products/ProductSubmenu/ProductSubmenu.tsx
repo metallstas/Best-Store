@@ -1,12 +1,11 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, Redirect } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import {
   activeCategory,
   textCategory,
 } from '../../../redux/actions/categoriesAction'
 import {
-  clearStateProduct,
   fetchProductsSubcategory,
   setIdProduct,
 } from '../../../redux/actions/productCategoryAction'
@@ -29,7 +28,6 @@ export const ProductSubmenu = ({ textSubmenu, category }: IProductSubmenu) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(clearStateProduct())
     dispatch(fetchProductsSubcategory(category, textSubmenu))
   }, [textSubmenu, category])
 

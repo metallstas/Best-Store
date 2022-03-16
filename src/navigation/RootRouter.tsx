@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { CardItem } from '../components/CradItem/CardItem'
 import { Header } from '../components/Header/Header'
+import { Login } from '../components/Login/Login'
 import {Main} from '../components/Main/Main'
 import { Products } from '../components/Products/Products'
 import { ProductSubmenu } from '../components/Products/ProductSubmenu/ProductSubmenu'
@@ -31,6 +32,33 @@ export const RootRouter = () => {
           <Products category="women's clothing"/>
         </Route>
         <Route path='/electronics/hdd/:id' exact>
+          <CardItem />
+        </Route>
+        <Route path='/electronics/ssd/:id' exact>
+          <CardItem />
+        </Route>
+        <Route path='/electronics/tv/:id' exact>
+          <CardItem />
+        </Route>
+        <Route path='/jewelery/rings/:id' exact>
+          <CardItem />
+        </Route>
+        <Route path='/jewelery/bracelets/:id' exact>
+          <CardItem />
+        </Route>
+        <Route path="/men's clothing/T-shirts/:id" exact>
+          <CardItem />
+        </Route>
+        <Route path="/men's clothing/jackets/:id" exact>
+          <CardItem />
+        </Route>
+        <Route path="/men's clothing/bags/:id" exact>
+          <CardItem />
+        </Route>
+        <Route path="/women's clothing/T-shirts/:id" exact>
+          <CardItem />
+        </Route>
+        <Route path="/women's clothing/jackets/:id" exact>
           <CardItem />
         </Route>
          <Route path='/electronics/hdd' exact>

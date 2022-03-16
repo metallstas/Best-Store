@@ -444,14 +444,21 @@
   ],
   "profile": [
     {
-      "id": 1,
+      "id": "1",
       "name": "test",
       "password": "test"
     },
     {
-      "id": 4,
-      "name": "Anastasia",
-      "password": "987"
+      "id": "67d79647f1545",
+      "email": "asd@asidgi.com",
+      "password": "Stas1234",
+      "numberPhone": "1234"
+    },
+    {
+      "id": "f793364cdbb62",
+      "email": "test@test.ru",
+      "password": "Stas1234",
+      "numberPhone": "1234"
     }
   ],
   "news": [

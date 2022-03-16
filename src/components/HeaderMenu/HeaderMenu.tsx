@@ -29,7 +29,7 @@ export const HeaderMenu = () => {
                       : `${cls.category}`
                   }
                   onMouseOver={(e) => {
-                    setIdCategory(item)
+                    setIdCategory(e.currentTarget.id)
                   }}
                 >
                   {textCategory(item)}

@@ -1,3 +1,4 @@
+import { authReducer, IAuthReducer } from './redusers/authReducer';
 import { headerReducer, IHeaderReducer } from './redusers/headerReducer'
 import {
   IProductCategory,
@@ -12,6 +13,7 @@ export interface IState {
   categoriesReducer: ICatergories
   productsCategoryReducer: IProductCategory
   headerReducer: IHeaderReducer
+  authReducer: IAuthReducer
 }
 
 export const store = createStore(
@@ -19,6 +21,7 @@ export const store = createStore(
     categoriesReducer,
     productsCategoryReducer,
     headerReducer,
+    authReducer,
   }),
   composeWithDevTools(applyMiddleware(thunk))
 )

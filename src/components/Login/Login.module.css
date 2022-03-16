@@ -1,0 +1,49 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  opacity: .6;
+  z-index: 5;
+}
+
+.login {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  width: min-content;
+  padding: 25px 15px;
+  border-radius: 15px;
+  z-index: 6;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.login button {
+  font-size: 20px;
+  font-weight: 300;
+  padding: 5px 15px;
+  margin-top: 20px;
+}
+
+.loginText {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.loginText p {
+  font-size: 35px;
+  font-weight: 300;
+  margin: 10px;
+  cursor: pointer;
+}
