@@ -453,12 +453,6 @@
       "email": "test@test.ru",
       "password": "Stas1234",
       "numberPhone": "1234"
-    },
-    {
-      "id": "dc0bf2694bf82",
-      "email": "munuinita@mail.ru",
-      "password": "Mun12345",
-      "numberPhone": "+375336128264"
     }
   ],
   "news": [
