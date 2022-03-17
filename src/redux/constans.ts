@@ -20,6 +20,7 @@ export const ACTIONS = {
   CONFIRM_REGISTRATION: 'CONFIRM_REGISTRATION',
   LOGIN: 'LOGIN',
   ERROR_LOGIN: 'ERROR_LOGIN',
+  GO_OUT_PROFILE: 'GO_OUT_PROFILE',
 }
 
 export const currenTextSubmenu = (textSubmenu: string) => {
@@ -54,4 +55,14 @@ export const currenTextSubmenu = (textSubmenu: string) => {
   if (textSubmenu === 'rings') {
     return 'Кольца'
   }
+}
+
+export const currentCategory = (category: string) => {
+  if(category === "men'sclothing") {
+    return "men's clothing"
+  }
+  if(category === "women'sclothing") {
+    return "women's clothing"
+  }
+  return category
 }

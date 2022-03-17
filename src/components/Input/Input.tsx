@@ -1,9 +1,7 @@
-import { ChangeEventHandler } from 'react'
 import cls from './Input.module.css'
 
 interface IInput {
   type?: string
-  // onChange: ChangeEventHandler<HTMLInputElement>
   onChange: (value: string) => void
   value: string
   label: string

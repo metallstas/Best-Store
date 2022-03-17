@@ -1,0 +1,23 @@
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+}
+
+.navProfile {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.navProfileWrapper {
+  margin-right: 30px;
+}
+
+.navProfile a  {
+  text-decoration: none;
+  color: #000;
+}

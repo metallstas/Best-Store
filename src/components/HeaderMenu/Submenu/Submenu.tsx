@@ -40,7 +40,7 @@ export const Submenu = ({ textCategory }: ISubmenu) => {
         {subcategory
           ? subcategory.map((text: string) => {
               return (
-                <NavLink key={text} to={`/${textCategory}/${text}`}>
+                <NavLink key={text} to={`/${textCategory.split(' ').join('')}/${text}`}>
                   {currenTextSubmenu(text)}
                 </NavLink>
               )

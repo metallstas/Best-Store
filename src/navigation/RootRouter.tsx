@@ -1,97 +1,57 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { CardItem } from '../components/CradItem/CardItem'
-import { Header } from '../components/Header/Header'
-import { Login } from '../components/Login/Login'
-import {Main} from '../components/Main/Main'
+import { HomePage } from '../components/HomePage/HomePage'
+import { Main } from '../components/Main/Main'
 import { Products } from '../components/Products/Products'
 import { ProductSubmenu } from '../components/Products/ProductSubmenu/ProductSubmenu'
-import { IState } from '../redux/store'
+import { Profile } from '../components/Profile/Profile'
+import { init } from '../redux/actions/authAction'
 
 export const RootRouter = () => {
-  const products = ((state: IState) => state.productsCategoryReducer.products)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(init())
+  }, [dispatch])
+
   return (
     <BrowserRouter>
-      <Header />
-      <Switch>
-        <Route path='/' exact>
-          <Main />
+      <Routes>
+        <Route path='/' element={<Main />}>
+          <Route index element={<HomePage />} />
+          <Route path='searchProducts' element={<Products />} />
+          <Route path='user/*' element={<Profile />}>
+            <Route path='myProfile' element={<h1>Мой профиль</h1>} />
+            <Route path='myDiscount' element={<h1>Моя Скидка</h1>} />
+          </Route>
+          <Route path='electronics' element={<Products />} />
+          <Route path='electronics/hdd' element={<ProductSubmenu />} />
+          <Route path='electronics/ssd' element={<ProductSubmenu />} />
+          <Route path='electronics/tv' element={<ProductSubmenu />} />
+          <Route path='electronics/hdd/:id' element={<CardItem />} />
+          <Route path='electronics/ssd/:id' element={<CardItem />} />
+          <Route path='electronics/tv/:id' element={<CardItem />} />
+          <Route path='jewelery' element={<Products />} />
+          <Route path='jewelery/rings' element={<ProductSubmenu/>} />
+          <Route path='jewelery/bracelet' element={<ProductSubmenu />} />
+          <Route path='jewelery/rings/:id' element={<CardItem />} />
+          <Route path='jewelery/bracelet/:id' element={<CardItem />} />
+          <Route path="men'sclothing" element={<Products />} />
+          <Route path="men'sclothing/T-shirts" element={<ProductSubmenu />} />
+          <Route path="men'sclothing/jackets" element={<ProductSubmenu />} />
+          <Route path="men'sclothing/bags" element={<ProductSubmenu />} />
+          <Route path="men'sclothing/T-shirts/:id" element={<CardItem />} />
+          <Route path="men'sclothing/jackets/:id" element={<CardItem />} />
+          <Route path="men'sclothing/bags/:id" element={<CardItem />} />
+          <Route path="women'sclothing" element={<Products />} />
+          <Route path="women'sclothing/T-shirts" element={<ProductSubmenu />} />
+          <Route path="women'sclothing/jackets" element={<ProductSubmenu />} />
+          <Route path="women'sclothing/T-shirts/:id" element={<ProductSubmenu />} />
+          <Route path="women'sclothing/jackets/:id" element={<ProductSubmenu />} />
         </Route>
-        <Route path='/searchText' exact>
-          <Products />
-        </Route>
-        <Route path='/electronics' exact>
-          <Products category='electronics' />
-        </Route>
-        <Route path='/jewelery' exact>
-          <Products category='jewelery'/>
-        </Route>
-        <Route path="/men's clothing" exact>
-          <Products category="men's clothing"/>
-        </Route>
-        <Route path="/women's clothing" exact>
-          <Products category="women's clothing"/>
-        </Route>
-        <Route path='/electronics/hdd/:id' exact>
-          <CardItem />
-        </Route>
-        <Route path='/electronics/ssd/:id' exact>
-          <CardItem />
-        </Route>
-        <Route path='/electronics/tv/:id' exact>
-          <CardItem />
-        </Route>
-        <Route path='/jewelery/rings/:id' exact>
-          <CardItem />
-        </Route>
-        <Route path='/jewelery/bracelet/:id' exact>
-          <CardItem />
-        </Route>
-        <Route path="/men's clothing/T-shirts/:id" exact>
-          <CardItem />
-        </Route>
-        <Route path="/men's clothing/jackets/:id" exact>
-          <CardItem />
-        </Route>
-        <Route path="/men's clothing/bags/:id" exact>
-          <CardItem />
-        </Route>
-        <Route path="/women's clothing/T-shirts/:id" exact>
-          <CardItem />
-        </Route>
-        <Route path="/women's clothing/jackets/:id" exact>
-          <CardItem />
-        </Route>
-         <Route path='/electronics/hdd' exact>
-          <ProductSubmenu category='electronics' textSubmenu='hdd' />
-        </Route>
-        <Route path='/electronics/ssd' exact>
-          <ProductSubmenu category='electronics' textSubmenu='ssd' />
-        </Route>
-        <Route path='/electronics/tv' exact>
-          <ProductSubmenu category='electronics' textSubmenu='tv' />
-        </Route>
-        <Route path='/jewelery/rings' exact>
-          <ProductSubmenu category='jewelery' textSubmenu='rings' />
-        </Route>
-        <Route path='/jewelery/bracelet' exact>
-          <ProductSubmenu category='jewelery' textSubmenu='bracelet' />
-        </Route>
-        <Route path="/men's clothing/T-shirts" exact>
-          <ProductSubmenu category="men's clothing" textSubmenu='T-shirts' />
-        </Route>
-        <Route path="/men's clothing/jackets" exact>
-          <ProductSubmenu category="men's clothing" textSubmenu='jackets' />
-        </Route>
-        <Route path="/men's clothing/bags" exact>
-          <ProductSubmenu category="men's clothing" textSubmenu='bags' />
-        </Route>
-        <Route path="/women's clothing/T-shirts" exact>
-          <ProductSubmenu category="women's clothing" textSubmenu='T-shirts' />
-        </Route>
-        <Route path="/women's clothing/jackets" exact>
-          <ProductSubmenu category="women's clothing" textSubmenu='jackets' />
-        </Route>
-      </Switch>
+      </Routes>
     </BrowserRouter>
   )
 }

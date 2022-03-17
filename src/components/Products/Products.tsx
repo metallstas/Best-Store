@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useHistory } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import {
   activeCategory,
   textCategory,
@@ -16,12 +16,12 @@ import cls from './Products.module.css'
 import { CardProduct } from '../CardProduct/CardProduct'
 import { Loading } from '../Loading/Loading'
 import { closeMenu } from '../../redux/actions/headeAction'
+import { currentCategory } from '../../redux/constans'
 
-interface IProducts {
-  category?: string
-}
+export const Products = () => {
+  const location = useLocation()
+  const dispatch = useDispatch()
 
-export const Products = ({ category }: IProducts) => {
   const products = useSelector(
     (state: IState) => state.productsCategoryReducer.products
   )
@@ -29,39 +29,54 @@ export const Products = ({ category }: IProducts) => {
     (state: IState) => state.productsCategoryReducer.searchText
   )
 
-  const activeCategoryText = useSelector(
-    (state: IState) => state.categoriesReducer.activeCategory
-  )
-  const dispatch = useDispatch()
+  const category = !text ? location.pathname.split('/')[1] : ''
+
+  useEffect(() => {
+    if (text) {
+      dispatch(fetchSearchProducts(text))
+    }
+  }, [text, dispatch])
 
   useEffect(() => {
     if (category) {
-      dispatch(fetchProductsCategory(category))
+      dispatch(fetchProductsCategory(currentCategory(category)))
       dispatch(activeCategory(category))
     }
-  }, [])
+  }, [category, dispatch])
 
   const onMouseOverCard = (id: number) => {
     dispatch(setIdProduct(id))
   }
 
   return (
-    <div className={cls.productsWrapper}>
+    <section>
       <div className={cls.container}>
         <div className={cls.naviBlock}>
-          <NavLink to='/' onClick={() => {dispatch(closeMenu())}}>Главная &#62;</NavLink>
+          <NavLink
+            to='/'
+            onClick={() => {
+              dispatch(closeMenu())
+            }}
+          >
+            Главная &#62;
+          </NavLink>
           <span className={cls.activeCategory}>
-            {textCategory(activeCategoryText)}
+            {textCategory(currentCategory(category))}
           </span>
         </div>
 
         <div className={cls.wrapper}>
           {products ? (
-            products.map((item: IProduct) => {
+            products.map((product: IProduct) => {
               return (
                 <CardProduct
-                  key={item.id}
-                  product={item}
+                  key={product.id}
+                  category={product.category}
+                  id={product.id}
+                  title={product.title}
+                  image={product.image}
+                  price={product.price}
+                  subcategory={product.subcategory}
                   onMouseOver={(e) => {
                     onMouseOverCard(+e.currentTarget.id)
                   }}
@@ -71,8 +86,14 @@ export const Products = ({ category }: IProducts) => {
           ) : (
             <Loading />
           )}
+          {products.length === 0 ? (
+            <div className={cls.noProducts}>
+              <img src='/images/noProducts.png' alt='No roducts' />
+              <p>Извините, товары не найдены</p>
+            </div>
+          ) : null}
         </div>
       </div>
-    </div>
+    </section>
   )
 }

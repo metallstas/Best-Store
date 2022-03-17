@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import {
   activeCategory,
   textCategory,
@@ -12,23 +12,23 @@ import {
 import { IProduct } from '../../../redux/redusers/productsCategoryReducer'
 import { IState } from '../../../redux/store'
 import cls from './ProductSubmenu.module.css'
-import { currenTextSubmenu } from '../../../redux/constans'
+import { currentCategory, currenTextSubmenu } from '../../../redux/constans'
 import { CardProduct } from '../../CardProduct/CardProduct'
 import { Loading } from '../../Loading/Loading'
 
-interface IProductSubmenu {
-  textSubmenu: string
-  category: string
-}
-
-export const ProductSubmenu = ({ textSubmenu, category }: IProductSubmenu) => {
+export const ProductSubmenu = () => {
   const productsSubcategory = useSelector(
     (state: IState) => state.productsCategoryReducer.productsSubcategory
   )
   const dispatch = useDispatch()
 
+  const location = useLocation()
+  const locationItem = location.pathname.split('/')
+  const category = locationItem[1]
+  const textSubmenu = locationItem[2]
+
   useEffect(() => {
-    dispatch(fetchProductsSubcategory(category, textSubmenu))
+    dispatch(fetchProductsSubcategory(currentCategory(category), textSubmenu))
   }, [textSubmenu, category])
 
   const a = () => {
@@ -40,12 +40,12 @@ export const ProductSubmenu = ({ textSubmenu, category }: IProductSubmenu) => {
   }
 
   return (
-    <div className={cls.productsWrapper}>
+    <div>
       <div className={cls.container}>
         <div className={cls.naviBlock}>
           <NavLink to='/'>Главная &#62;</NavLink>
           <NavLink to={`/${category}`} onClick={a}>
-            {textCategory(category)} &#62;
+            {textCategory(currentCategory(category))} &#62;
           </NavLink>
           <span className={cls.activeCategory}>
             {currenTextSubmenu(textSubmenu)}
@@ -53,12 +53,19 @@ export const ProductSubmenu = ({ textSubmenu, category }: IProductSubmenu) => {
         </div>
         <div className={cls.wrapper}>
           {productsSubcategory ? (
-            productsSubcategory.map((item: IProduct) => {
+            productsSubcategory.map((product: IProduct) => {
               return (
                 <CardProduct
-                  key={item.id}
-                  product={item}
-                  onMouseOver={(e) => onMouseOverCard(+e.currentTarget.id)}
+                  key={product.id}
+                  category={product.category}
+                  id={product.id}
+                  title={product.title}
+                  image={product.image}
+                  price={product.price}
+                  subcategory={product.subcategory}
+                  onMouseOver={(e) => {
+                    onMouseOverCard(+e.currentTarget.id)
+                  }}
                 />
               )
             })

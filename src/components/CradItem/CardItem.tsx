@@ -13,26 +13,27 @@ import { SimilarProducts } from '../SimilarProducts/SimilarProducts'
 import cls from './CardItem.module.css'
 
 export const CardItem = () => {
-  const params: { id: string } = useParams()
+  const {id} = useParams()
   const productItem = useSelector(
     (state: IState) => state.productsCategoryReducer.productId
   )
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchProductId(params.id))
-  }, [params.id])
+    if (id) {
+      dispatch(fetchProductId(id))
+    }
+  }, [id, dispatch])
 
-  const a = () => {
+  const onClickActiveCategory = () => {
     dispatch(activeCategory(productItem.category))
   }
 
   return (
     <div className={cls.container}>
-      {console.log(productItem)}
       {productItem ? (
         <div className={cls.naviBlock}>
           <NavLink to='/'>Главная &#62;</NavLink>
-          <NavLink to={`/${productItem.category}`} onClick={a}>
+          <NavLink to={`/${productItem.category}`} onClick={onClickActiveCategory}>
             {textCategory(productItem.category)} &#62;
           </NavLink>
           <NavLink to={`/${productItem.category}/${productItem.subcategory}/`}>

@@ -91,7 +91,6 @@ export const fetchProductSubcategory = (category: string) => {
 }
 
 export const fetchProductId = (id: string) => {
-  console.log(id)
   return async (dispatch: Dispatch) => {
     const resp = await fetch(`http://localhost:3005/products/` + id)
     const data = await resp.json()

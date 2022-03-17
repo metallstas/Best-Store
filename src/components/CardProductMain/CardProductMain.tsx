@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { IProduct } from '../../redux/redusers/productsCategoryReducer'
 import cls from './CardProductMain.module.css'
 
@@ -7,9 +7,9 @@ interface ICardProductMain {
 }
 
 export const CardProductMain = ({product}: ICardProductMain) => {
-  const history = useHistory()
+  const navigate = useNavigate()
   const onClick = () => {
-    history.push(`/${product.category}/${product.subcategory}/${product.id}`)
+    navigate(`/${product.category}/${product.subcategory}/${product.id}`)
   }
 
   return (

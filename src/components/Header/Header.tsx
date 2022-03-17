@@ -1,6 +1,5 @@
-import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, Redirect } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { fetchCategories } from '../../redux/actions/categoriesAction'
 import {
   closeMenu,
@@ -9,7 +8,6 @@ import {
   showSearch,
 } from '../../redux/actions/headeAction'
 import {
-  fetchSearchProducts,
   searchText,
 } from '../../redux/actions/productCategoryAction'
 import { IState } from '../../redux/store'
@@ -18,10 +16,10 @@ import { Login } from '../Login/Login'
 import cls from './Header.module.css'
 
 export const Header = () => {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
-  const showLog = useSelector((state: IState) => state.headerReducer.showLogin)
+  const isShowLogin = useSelector((state: IState) => state.headerReducer.showLogin)
   const isLogin = useSelector((state: IState) => state.authReducer.isLoggedIn)
-  const [showSubmenuProfile, setShowSubmenuProfile] = useState<boolean>(false)
 
   const text = useSelector(
     (state: IState) => state.productsCategoryReducer.searchText
@@ -38,19 +36,23 @@ export const Header = () => {
 
   const menuCloseHandler = () => {
     dispatch(closeMenu())
+    dispatch(showSearch(false))
   }
 
   const showSearchHandler = () => {
-    dispatch(showSearch())
+    dispatch(showSearch(true))
+    if(showSearchInput) {
+      dispatch(showSearch(false))
+    }
   }
 
   const searchProductHandler = (text: string) => {
-    dispatch(fetchSearchProducts(text))
+    dispatch(searchText(text))
+    navigate('/searchProducts')
   }
 
   return (
     <>
-    {console.log(showSubmenuProfile)}
       <header className={cls.header}>
         <div className={cls.container}>
           <div className={cls.wrapper}>
@@ -76,7 +78,6 @@ export const Header = () => {
                   className={cls.input}
                   value={text}
                   onChange={(e) => {
-                    dispatch(searchText(e.target.value))
                     searchProductHandler(e.target.value)
                   }}
                   placeholder='Поиск'
@@ -93,7 +94,12 @@ export const Header = () => {
               </div>
               <div className={cls.userBlockItem}>
                 {isLogin ? (
-                  <div className={cls.userBlockItem} onMouseOver={() => {setShowSubmenuProfile(true)}}>
+                  <div
+                    className={cls.userBlockItem}
+                    onClick={() => {
+                      navigate('/user')
+                    }}
+                  >
                     <img
                       className={cls.imgHeader}
                       src='/images/profile1.png'
@@ -137,9 +143,8 @@ export const Header = () => {
           </div>
         </div>
         {isOpen ? <HeaderMenu /> : null}
-        {text ? <Redirect to='/searchText' /> : null}
       </header>
-      {showLog ? <Login /> : null}
+      {isShowLogin ? <Login /> : null}
     </>
   )
 }

@@ -38,7 +38,6 @@ export const Registration = () => {
 
     const values = Object.values(errors)
     const isValid = values.every((value) => value === '')
-    console.log(errors)
 
     if (isValid) {
       dispatch(registration({ email, password, numberPhone }))

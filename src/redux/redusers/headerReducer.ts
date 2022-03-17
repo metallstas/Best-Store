@@ -26,7 +26,7 @@ export const headerReducer = (state = defaultState, action: any) => {
   }
 
   if (action.type === ACTIONS.SHOW_SEARCH) {
-    return { ...state, showSearch: !state.showSearch }
+    return { ...state, showSearch: action.showSearch }
   }
 
   if (action.type === ACTIONS.SHOW_LOGIN) {

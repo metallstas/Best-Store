@@ -8,8 +8,8 @@ export const closeMenu = () => {
   return { type: ACTIONS.CLOSE_MENU }
 }
 
-export const showSearch = () => {
-  return { type: ACTIONS.SHOW_SEARCH }
+export const showSearch = (isShow: boolean) => {
+  return { type: ACTIONS.SHOW_SEARCH, showSearch: isShow }
 }
 
 export const showLogin = (isShow: boolean) => {

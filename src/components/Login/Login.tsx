@@ -31,10 +31,6 @@ export const Login = () => {
     dispatch(errorLogin(''))
   }, [])
 
-  // useEffect(() => {
-  //   dispatch(showLogin(false))
-  // }, [isLoggedIn])
-
   const onChangePassword = useCallback((value) => {
     setPassword(value)
   }, [])
@@ -80,7 +76,6 @@ export const Login = () => {
                 Зарегистрироваться
               </p>
             </div>
-
             <Input
               type='email'
               label='Электронная Почта'

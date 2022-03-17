@@ -12,10 +12,6 @@
   margin-bottom: 60px;
 }
 
-.productsWrapper {
-  margin-top: 60px;
-}
-
 .product {
   width: min-content;
   margin: 20px 10px;
@@ -45,6 +41,7 @@
 
 .naviBlock {
   padding: 10px 0;
+  margin: 10px 0;
 }
 
 .naviBlock a {

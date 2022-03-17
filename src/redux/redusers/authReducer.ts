@@ -47,5 +47,11 @@ export const authReducer = (state = defaultState, action: any) => {
     }
   }
 
+  if (action.type === ACTIONS.GO_OUT_PROFILE) {
+    return {
+      defaultState
+    }
+  }
+
   return state
 }
