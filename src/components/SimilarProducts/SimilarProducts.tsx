@@ -26,7 +26,7 @@ export const SimilarProducts = ({
       <p className={cls.similarProductText}>Похожие товары</p>
       <div className={cls.similarProduct}>
         {products ? products.map((product) => (
-          <CardProductMain product={product} key={product.id}/>
+          <CardProductMain id={product.id} title={product.title} price={product.price} category={product.category} subcategory={product.subcategory} image={product.image} key={product.id}/>
         )) : null}
       </div>
     </div>

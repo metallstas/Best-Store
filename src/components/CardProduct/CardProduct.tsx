@@ -36,7 +36,6 @@ export const CardProduct = ({
   const navigate = useNavigate()
   const getInfoProduct = (id: string) => {
     dispatch(showSearch(false))
-
     navigate(`/${productCategory}/${subcategory}/${id}`)
   }
 

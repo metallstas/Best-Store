@@ -1,4 +1,7 @@
 import cls from './Footer.module.css'
+import { ReactComponent as Telegram } from './telegram.svg'
+import { ReactComponent as Viber } from './viber.svg'
+import { ReactComponent as WA } from './wa.svg'
 
 export const Footer = () => {
   return (
@@ -34,6 +37,17 @@ export const Footer = () => {
               <div className={cls.footerPhone}>
                 <img src='/images/Phone.png' alt='phone' />
                 <a href='tel:+375336128264'>+375(33)612-82-64</a>
+              </div>
+              <div className={cls.footerSocial}>
+                <a href='https://t.me' target='_blank'>
+                  <Telegram />
+                </a>
+                <a href='https://www.viber.com' target='_blank'>
+                  <Viber />
+                </a>
+                <a href='https://www.whatsapp.com' target='_blank'>
+                  <WA />
+                </a>
               </div>
               <p>
                 Время работы: пн-вс с 09:00 до 21:00, Заказы через корзину

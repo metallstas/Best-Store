@@ -7,7 +7,7 @@
   width: 100%;
   margin: 0px auto;
   margin-top: 20px;
-  padding: 30px 15px;
+  padding: 40px 15px;
 }
 
 .descriptionStore {
@@ -65,7 +65,7 @@
 }
 
 .footerInfo p {
-  margin-top: 15px;
+  margin-top: 30px;
   color: rgb(70, 70, 70);
 }
 
@@ -92,7 +92,6 @@
   align-items: center;
   margin: 0 15px;
   color: rgb(70, 70, 70);
-
   flex: 1;
 }
 
@@ -101,6 +100,27 @@
   justify-content: right;
   margin: 0 15px;
   color: rgb(70, 70, 70);
-
   flex: 0.5;
+}
+
+.footerSocial {
+  display: flex;
+  margin-top: 30px;
+}
+
+.footerSocial svg {
+  width: 25px;
+  height: 25px;
+}
+
+.footerSocial a {
+  margin: 0;
+  margin-right: 10px;
+  padding: 7px;
+  background: #276640;
+  border-radius: 50%;
+}
+
+.footerSocial a:hover {
+  background: #1a462c;
 }

@@ -17,6 +17,8 @@ export const CardItem = () => {
   const productItem = useSelector(
     (state: IState) => state.productsCategoryReducer.productId
   )
+  const productCategory = productItem.category.split(' ').join('')
+
   const dispatch = useDispatch()
   useEffect(() => {
     if (id) {
@@ -33,10 +35,10 @@ export const CardItem = () => {
       {productItem ? (
         <div className={cls.naviBlock}>
           <NavLink to='/'>Главная &#62;</NavLink>
-          <NavLink to={`/${productItem.category}`} onClick={onClickActiveCategory}>
+          <NavLink to={`/${productCategory}`} onClick={onClickActiveCategory}>
             {textCategory(productItem.category)} &#62;
           </NavLink>
-          <NavLink to={`/${productItem.category}/${productItem.subcategory}/`}>
+          <NavLink to={`/${productCategory}/${productItem.subcategory}/`}>
             {currenTextSubmenu(productItem.subcategory)}
           </NavLink>
         </div>

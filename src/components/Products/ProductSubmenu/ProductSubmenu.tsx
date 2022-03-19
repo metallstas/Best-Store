@@ -39,12 +39,14 @@ export const ProductSubmenu = () => {
     dispatch(setIdProduct(id))
   }
 
+  const productCategory = category.split(' ').join('')
+
   return (
     <div>
       <div className={cls.container}>
         <div className={cls.naviBlock}>
           <NavLink to='/'>Главная &#62;</NavLink>
-          <NavLink to={`/${category}`} onClick={a}>
+          <NavLink to={`/${productCategory}`} onClick={a}>
             {textCategory(currentCategory(category))} &#62;
           </NavLink>
           <span className={cls.activeCategory}>

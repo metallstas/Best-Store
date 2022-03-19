@@ -50,8 +50,8 @@ export const RootRouter = () => {
           <Route path="women'sclothing" element={<Products />} />
           <Route path="women'sclothing/T-shirts" element={<ProductSubmenu />} />
           <Route path="women'sclothing/jackets" element={<ProductSubmenu />} />
-          <Route path="women'sclothing/T-shirts/:id" element={<ProductSubmenu />} />
-          <Route path="women'sclothing/jackets/:id" element={<ProductSubmenu />} />
+          <Route path="women'sclothing/T-shirts/:id" element={<CardItem />} />
+          <Route path="women'sclothing/jackets/:id" element={<CardItem />} />
         </Route>
       </Routes>
     </BrowserRouter>
