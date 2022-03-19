@@ -42,7 +42,7 @@ export const Products = () => {
       dispatch(fetchProductsCategory(currentCategory(category)))
       dispatch(activeCategory(category))
     }
-  }, [category, dispatch])
+  }, [category])
 
   const onMouseOverCard = (id: number) => {
     dispatch(setIdProduct(id))

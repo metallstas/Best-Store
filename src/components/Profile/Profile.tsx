@@ -13,13 +13,15 @@ export const Profile = () => {
     navigate('/')
   }
 
+  const isActiveLink = ({isActive}: any) => isActive ? cls.active : ''
+
   return (
     <div className={cls.container}>
       <div className={cls.navProfileWrapper}>
-        <h1>Мои данные</h1>
+        <p className={cls.profileTitle}>Мои данные</p>
         <ul className={cls.navProfile}>
-          <NavLink to='myProfile'>Мои данные</NavLink>
-          <NavLink to='myDiscount'>Моя скидка</NavLink>
+          <NavLink className={isActiveLink} to='myProfile'>Мои данные</NavLink>
+          <NavLink className={isActiveLink} to='myDiscount'>Персональная скидка</NavLink>
           <p onClick={clickToLogOut}>Выйти</p>
         </ul>
       </div>

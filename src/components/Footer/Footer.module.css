@@ -1,0 +1,106 @@
+.footer {
+  background: #eff0f1;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0px auto;
+  margin-top: 20px;
+  padding: 30px 15px;
+}
+
+.descriptionStore {
+  color: rgb(70, 70, 70);
+}
+
+.payBlock {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.delivery {
+  display: flex;
+  margin-top: 20px;
+}
+
+.delivery div {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.delivery img {
+  height: 30px;
+  margin-right: 15px;
+}
+
+.paySystem {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.paySystem img {
+  height: 25px;
+  margin: 10px;
+}
+
+.footerInfo img {
+  height: 40px;
+}
+
+.footerPhone {
+  display: flex;
+  align-items: center;
+}
+
+.footerInfo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  font-size: 30px;
+  font-weight: 300;
+  margin-left: 10px;
+}
+
+.footerInfo p {
+  margin-top: 15px;
+  color: rgb(70, 70, 70);
+}
+
+.borderBottom {
+  border-bottom: 1px solid rgb(70, 70, 70);
+}
+
+.footerLegal {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.footerCopy {
+  display: flex;
+  margin: 0 15px;
+  flex: .5;
+  color: rgb(70, 70, 70);
+}
+
+.footerCopyText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 15px;
+  color: rgb(70, 70, 70);
+
+  flex: 1;
+}
+
+.footerDev {
+  display: flex;
+  justify-content: right;
+  margin: 0 15px;
+  color: rgb(70, 70, 70);
+
+  flex: 0.5;
+}

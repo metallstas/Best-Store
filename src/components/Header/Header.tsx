@@ -97,7 +97,7 @@ export const Header = () => {
                   <div
                     className={cls.userBlockItem}
                     onClick={() => {
-                      navigate('/user')
+                      navigate('/user/myProfile')
                     }}
                   >
                     <img

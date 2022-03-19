@@ -19,5 +19,17 @@
 
 .navProfile a  {
   text-decoration: none;
+  color: rgb(116, 116, 116);
+  /* color: #000; */
+}
+
+.profileTitle {
+  font-size: 40px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.navProfile .active {
   color: #000;
+  /* border-bottom: 1px solid #000; */
 }

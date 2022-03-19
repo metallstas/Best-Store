@@ -7,6 +7,8 @@ import { Main } from '../components/Main/Main'
 import { Products } from '../components/Products/Products'
 import { ProductSubmenu } from '../components/Products/ProductSubmenu/ProductSubmenu'
 import { Profile } from '../components/Profile/Profile'
+import { ProfileData } from '../components/Profile/ProfileData/ProfileData'
+import { ProfileDiscount } from '../components/Profile/ProfileDiscount/ProfileDiscount'
 import { init } from '../redux/actions/authAction'
 
 export const RootRouter = () => {
@@ -23,8 +25,8 @@ export const RootRouter = () => {
           <Route index element={<HomePage />} />
           <Route path='searchProducts' element={<Products />} />
           <Route path='user/*' element={<Profile />}>
-            <Route path='myProfile' element={<h1>Мой профиль</h1>} />
-            <Route path='myDiscount' element={<h1>Моя Скидка</h1>} />
+            <Route path='myProfile' element={<ProfileData />} />
+            <Route path='myDiscount' element={<ProfileDiscount />} />
           </Route>
           <Route path='electronics' element={<Products />} />
           <Route path='electronics/hdd' element={<ProductSubmenu />} />
