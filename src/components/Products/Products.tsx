@@ -8,7 +8,6 @@ import {
 import {
   fetchProductsCategory,
   fetchSearchProducts,
-  setIdProduct,
 } from '../../redux/actions/productCategoryAction'
 import { IProduct } from '../../redux/redusers/productsCategoryReducer'
 import { IState } from '../../redux/store'
@@ -17,6 +16,7 @@ import { CardProduct } from '../CardProduct/CardProduct'
 import { Loading } from '../Loading/Loading'
 import { closeMenu } from '../../redux/actions/headeAction'
 import { currentCategory } from '../../redux/constans'
+import { NoProducts } from '../NoProducts/NoProducts'
 
 export const Products = () => {
   const location = useLocation()
@@ -44,10 +44,6 @@ export const Products = () => {
     }
   }, [category])
 
-  const onMouseOverCard = (id: number) => {
-    dispatch(setIdProduct(id))
-  }
-
   return (
     <section>
       <div className={cls.container}>
@@ -64,7 +60,6 @@ export const Products = () => {
             {textCategory(currentCategory(category))}
           </span>
         </div>
-
         <div className={cls.wrapper}>
           {products ? (
             products.map((product: IProduct) => {
@@ -77,9 +72,6 @@ export const Products = () => {
                   image={product.image}
                   price={product.price}
                   subcategory={product.subcategory}
-                  onMouseOver={(e) => {
-                    onMouseOverCard(+e.currentTarget.id)
-                  }}
                 />
               )
             })
@@ -87,10 +79,7 @@ export const Products = () => {
             <Loading />
           )}
           {products.length === 0 ? (
-            <div className={cls.noProducts}>
-              <img src='/images/noProducts.png' alt='No roducts' />
-              <p>Извините, товары не найдены</p>
-            </div>
+            <NoProducts text='Извините, товары не найдены' />
           ) : null}
         </div>
       </div>

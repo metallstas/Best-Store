@@ -1,5 +1,7 @@
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { fetchGetBasketProducts } from '../../redux/actions/basketAction'
 import { fetchCategories } from '../../redux/actions/categoriesAction'
 import {
   closeMenu,
@@ -18,8 +20,11 @@ import cls from './Header.module.css'
 export const Header = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const userId = useSelector((state: IState) => state.authReducer.id)
   const isShowLogin = useSelector((state: IState) => state.headerReducer.showLogin)
   const isLogin = useSelector((state: IState) => state.authReducer.isLoggedIn)
+  const basketProduct = useSelector((state: IState) => state.basketReducer.basketProducts)
+  const favoriteProducts = useSelector((state: IState) => state.favoritesReducer.productsFavorites)
 
   const text = useSelector(
     (state: IState) => state.productsCategoryReducer.searchText
@@ -28,6 +33,10 @@ export const Header = () => {
   const showSearchInput = useSelector(
     (state: IState) => state.headerReducer.showSearch
   )
+
+  useEffect(() => {
+    dispatch(fetchGetBasketProducts(userId))
+  },[userId])
 
   const menuOpenHandler = () => {
     dispatch(openMenu())
@@ -94,11 +103,8 @@ export const Header = () => {
               </div>
               <div className={cls.userBlockItem}>
                 {isLogin ? (
-                  <div
-                    className={cls.userBlockItem}
-                    onClick={() => {
-                      navigate('/user/myProfile')
-                    }}
+                  <NavLink
+                    to='/user/myProfile'
                   >
                     <img
                       className={cls.imgHeader}
@@ -106,7 +112,7 @@ export const Header = () => {
                       alt='profile'
                     />
                     <p>Профиль</p>
-                  </div>
+                  </NavLink>
                 ) : (
                   <div
                     className={cls.userBlockItem}
@@ -123,22 +129,26 @@ export const Header = () => {
                   </div>
                 )}
               </div>
-              <div className={cls.userBlockItem}>
+              <NavLink to='/favorites' className={cls.userBlockItem}>
                 <img
                   className={cls.imgHeader}
                   src='/images/favorites.png'
                   alt='favorites'
                 />
                 <p>Избранное</p>
-              </div>
-              <div className={cls.userBlockItem}>
+                {favoriteProducts && favoriteProducts.length ? <span className={cls.productCount}>{favoriteProducts.length}</span> : null}
+              </NavLink>
+              <NavLink 
+                to='/basket'
+                className={cls.userBlockItem}>
                 <img
                   className={cls.imgHeader}
                   src='/images/basket.png'
                   alt='basket'
                 />
                 <p>Корзина</p>
-              </div>
+                {basketProduct && basketProduct.length ? <span className={cls.productCount}>{basketProduct.length}</span> : null}
+              </NavLink>
             </div>
           </div>
         </div>

@@ -1,7 +1,10 @@
 import { useCallback, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { registration } from '../../redux/actions/authAction'
-import { confirmRegister, showRegistration } from '../../redux/actions/headeAction'
+import {
+  confirmRegister,
+  showRegistration,
+} from '../../redux/actions/headeAction'
 import { IState } from '../../redux/store'
 import { validationService } from '../../services/validation'
 import { Input } from '../Input/Input'
@@ -48,7 +51,7 @@ export const Registration = () => {
   const onChangeEmail = useCallback((value) => {
     setEmail(value)
     const error = validationService.validateEmail(value)
-    setErrors((errors) => ({ ...errors, email: error}))
+    setErrors((errors) => ({ ...errors, email: error }))
   }, [])
 
   const onChangenumberPhone = useCallback((value) => {
@@ -74,10 +77,8 @@ export const Registration = () => {
       ) : (
         <>
           <div className={cls.loginText}>
-            <p onClick={() => dispatch(showRegistration(false))}>Войти</p> или
             <p>Зарегистрироваться</p>
           </div>
-
           <Input
             type='email'
             label='Электронная Почта'
@@ -108,6 +109,7 @@ export const Registration = () => {
             onChange={onChangeConfirmPassword}
             error={errors.confirmPassword}
           />
+          <p className={cls.backToLogin} onClick={() => dispatch(showRegistration(false))}>Войти</p>
           <button onClick={onClick}>Зарегистрироваться</button>
         </>
       )}

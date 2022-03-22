@@ -1,14 +1,19 @@
 .cardMain {
   margin: 0px 15px;
+  margin-bottom: 40px;
   width: min-content;
   padding: 5px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .cardMain img {
   width: 200px;
+}
+
+.cardMainInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .title {
@@ -18,4 +23,21 @@
 
 .price {
   font-size: 25px;
+}
+
+.delete {
+  background: rgb(228, 68, 68);
+  border-radius: 50%;
+  margin-left: 10px;
+  font-size: 20px;
+  width: 35px;
+  height: 35px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.delete:hover {
+  background: rgb(255, 0, 0);
 }

@@ -74,7 +74,7 @@ export const productsCategoryReducer = (state = defaultState, action: any) => {
     return { ...state, subcategory: action.subcategory }
   }
   if (action.type === ACTIONS.PRODUCT_ID) {
-    return { ...state, productId: action.product}
+    return { ...state, productId: action.product }
   }
 
   return state

@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux'
 import { NavLink, Outlet } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { goOutProfile } from '../../redux/actions/authAction'
+import { clearBasket } from '../../redux/actions/basketAction'
 import cls from './Profile.module.css'
 
 export const Profile = () => {
@@ -9,6 +10,7 @@ export const Profile = () => {
   const navigate = useNavigate()
 
   const clickToLogOut = () => {
+    dispatch(clearBasket())
     dispatch(goOutProfile())
     navigate('/')
   }
@@ -25,7 +27,7 @@ export const Profile = () => {
           <p onClick={clickToLogOut}>Выйти</p>
         </ul>
       </div>
-      <div>
+      <div className={cls.containerPage}>
         <Outlet />
       </div>
     </div>

@@ -19,7 +19,7 @@ const subcategory = (subCat: string[]) => {
 }
 
 const productId = (product: IProduct) => {
-  return {type: ACTIONS.PRODUCT_ID, product}
+  return { type: ACTIONS.PRODUCT_ID, product }
 }
 
 export const clearStateProduct = () => {

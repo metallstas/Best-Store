@@ -1,10 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import {
-  fetchCategories,
-  textCategory,
-} from '../../redux/actions/categoriesAction'
 import { fetchNewProducts } from '../../redux/actions/productCategoryAction'
 import { IProduct } from '../../redux/redusers/productsCategoryReducer'
 import { IState } from '../../redux/store'
@@ -17,9 +13,6 @@ export const HomePage = () => {
   const dispatch = useDispatch()
   const newProduct = useSelector(
     (state: IState) => state.productsCategoryReducer.newProduct
-  )
-  const categories = useSelector(
-    (state: IState) => state.categoriesReducer.categories
   )
 
   const showNewProducts = (category: string) => {
@@ -41,29 +34,11 @@ export const HomePage = () => {
   }
 
   useEffect(() => {
-    dispatch(fetchCategories())
     dispatch(fetchNewProducts())
   }, [])
 
   return (
-    <div>
-      <div className={cls.categories}>
-        <ul>
-          {categories.length ? (
-            categories.map((item) => {
-              const link = item.split(' ').join('')
-              return (
-                <NavLink to={`${link}`} key={link}>
-                  {textCategory(item)}
-                </NavLink>
-              )
-            })
-          ) : (
-            <Spiner />
-          )}
-        </ul>
-      </div>
-
+    <section>
       {newProduct ? (
         <div className={cls.container}>
           <NavLink to='/electronics/ssd' className={cls.img}>
@@ -107,6 +82,6 @@ export const HomePage = () => {
       ) : (
         <Loading />
       )}
-    </div>
+    </section>
   )
 }

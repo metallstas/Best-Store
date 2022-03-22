@@ -443,16 +443,12 @@
     }
   ],
   "profile": [
+    {},
     {
-      "id": "1",
-      "name": "test",
-      "password": "test"
-    },
-    {
-      "id": "f793364cdbb62",
-      "email": "test@test.ru",
+      "id": "47283875153aa",
+      "email": "stas@stas.ru",
       "password": "Stas1234",
-      "numberPhone": "1234"
+      "numberPhone": "+375336406397"
     }
   ],
   "news": [
@@ -537,5 +533,19 @@
     "jewelery",
     "women's clothing",
     "men's clothing"
+  ],
+  "basket": [
+    {
+      "id": "47283875153aa",
+      "email": "stas@stas.ru",
+      "basketProducts": []
+    }
+  ],
+  "favorites": [
+    {
+      "id": "47283875153aa",
+      "email": "stas@stas.ru",
+      "productsFavorites": []
+    }
   ]
 }

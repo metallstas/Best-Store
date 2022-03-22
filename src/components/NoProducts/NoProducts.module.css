@@ -1,0 +1,9 @@
+.noProducts {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.noProducts p {
+  font-size: 40px;
+  font-weight: 200;
+}

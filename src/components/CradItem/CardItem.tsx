@@ -50,7 +50,7 @@ export const CardItem = () => {
         <div className={cls.descriptionBlock}>
           <h2 className={cls.title}>{productItem.title}</h2>
           <p className={cls.price}>{productItem.price}$</p>
-          <Basket />
+          <Basket id={id ? id : ''}/>
           <div className={cls.deliveryBlock}>
             <div>
               <img src='/images/delivery.png' alt='delivery' />

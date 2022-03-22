@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BasketProducts } from '../components/BasketProducts/BasketProducts'
 import { CardItem } from '../components/CradItem/CardItem'
+import { Favorites } from '../components/Fvorites/Favorites'
 import { HomePage } from '../components/HomePage/HomePage'
 import { Main } from '../components/Main/Main'
 import { Products } from '../components/Products/Products'
@@ -24,6 +26,8 @@ export const RootRouter = () => {
         <Route path='/' element={<Main />}>
           <Route index element={<HomePage />} />
           <Route path='searchProducts' element={<Products />} />
+          <Route path='basket' element={<BasketProducts />} />
+          <Route path='favorites' element={<Favorites />} />
           <Route path='user/*' element={<Profile />}>
             <Route path='myProfile' element={<ProfileData />} />
             <Route path='myDiscount' element={<ProfileDiscount />} />

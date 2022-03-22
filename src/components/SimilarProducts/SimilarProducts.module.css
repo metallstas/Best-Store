@@ -10,4 +10,5 @@
 
 .similarProduct {
   display: flex;
+  flex-wrap: wrap;
 }

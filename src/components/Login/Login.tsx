@@ -71,10 +71,7 @@ export const Login = () => {
         ) : (
           <>
             <div className={cls.loginText}>
-              <p>Войти </p> или
-              <p onClick={() => dispatch(showRegistration(true))}>
-                Зарегистрироваться
-              </p>
+              <p>Войти</p>
             </div>
             <Input
               type='email'
@@ -94,7 +91,9 @@ export const Login = () => {
             {errorLoginText ? (
               <p style={{ color: 'red' }}>{errorLoginText}</p>
             ) : null}
-
+            <p className={cls.registerText} onClick={() => dispatch(showRegistration(true))}>
+              Зарегистрироваться
+            </p>
             <button onClick={onCLick}>Войти</button>
           </>
         )}

@@ -1,12 +1,16 @@
 .loginText {
   display: flex;
   align-items: center;
-  margin: 15px 0;
 }
 
 .loginText p {
   font-size: 35px;
   font-weight: 300;
   margin: 10px;
+  cursor: pointer;
+}
+
+.backToLogin {
+  border-bottom: 1px solid;
   cursor: pointer;
 }

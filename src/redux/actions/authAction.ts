@@ -30,6 +30,30 @@ export const goOutProfile = () => {
   return { type: ACTIONS.GO_OUT_PROFILE}
 }
 
+const createBasket = async (id: string, email: string) => {
+  const resp = await fetch('http://localhost:3005/basket/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id, email, basketProducts: []}),
+  })
+  const data = await resp.json()
+  return data
+}
+
+const createFavorites = async (id: string, email: string) => {
+  const resp = await fetch('http://localhost:3005/favorites/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id, email, productsFavorites: []}),
+  })
+  const data = await resp.json()
+  return data
+}
+
 export const registration = ({
   email,
   password,
@@ -39,6 +63,8 @@ export const registration = ({
     try {
       const id = idGenerator()
       const result = await registerUser({ email, password, id, numberPhone })
+      const basket = await createBasket(id, email)
+      const favorites = await createFavorites(id, email)
       dispatch(registerSuccess(result))
       dispatch(confirmRegister(true))
     } catch (error: any) {
@@ -71,6 +97,7 @@ export const init = () => {
     const password = localStorage.getItem('password')
     if (email && password) {
       const result = await loginUser(email, password)
+      console.log(result)
       dispatch(loginSuccess(result[0]))
     }
   }

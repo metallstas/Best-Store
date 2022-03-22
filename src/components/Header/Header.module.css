@@ -106,14 +106,19 @@
 }
 
 .userBlockItem {
+  position: relative;
   cursor: pointer;
-}
-
-.userBlock div {
+  text-decoration: none;
+  color: #000;
   text-align: center;
   font-size: 14px;
   font-weight: 300;
   margin-right: 10px;
+}
+
+.userBlockItem a {
+  text-decoration: none;
+  color: #000;
 }
 
 .input {
@@ -135,4 +140,18 @@
   font-size: 35px;
   text-decoration: none;
   color: #000;
+}
+
+.productCount {
+  position: absolute;
+  right: -1px;
+  top: -7px;
+  width: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 3px;
+  border-radius: 50%;
+  background: red;
+  color: #fff;
+  z-index: 5;
 }

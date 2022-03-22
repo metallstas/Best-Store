@@ -65,9 +65,6 @@ export const ProductSubmenu = () => {
                   image={product.image}
                   price={product.price}
                   subcategory={product.subcategory}
-                  onMouseOver={(e) => {
-                    onMouseOverCard(+e.currentTarget.id)
-                  }}
                 />
               )
             })

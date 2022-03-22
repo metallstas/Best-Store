@@ -2,6 +2,7 @@ import { SyntheticEvent } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { showSearch } from '../../redux/actions/headeAction'
+import { setIdProduct } from '../../redux/actions/productCategoryAction'
 import { IState } from '../../redux/store'
 import { Basket } from '../Basket/Basket'
 import { Spiner } from '../Spiner/Spiner'
@@ -14,7 +15,6 @@ interface IProductCard {
   price: number
   category: string
   subcategory: string
-  onMouseOver: (e: SyntheticEvent<HTMLDivElement>) => void
 }
 
 export const CardProduct = ({
@@ -24,7 +24,6 @@ export const CardProduct = ({
   image,
   price,
   category,
-  onMouseOver,
 }: IProductCard) => {
   const productId = useSelector(
     (state: IState) => state.productsCategoryReducer.idProduct
@@ -39,14 +38,17 @@ export const CardProduct = ({
     navigate(`/${productCategory}/${subcategory}/${id}`)
   }
 
+  const onMouseOverCard = (id: number) => {
+    dispatch(setIdProduct(id))
+  }
+
   return (
     <div
       className={cls.product}
-      onMouseOver={onMouseOver}
+      onMouseOver={(e) => onMouseOverCard(+e.currentTarget.id)}
       id={id}
-      onClick={() => getInfoProduct(id)}
     >
-      <div className={cls.productCard}>
+      <div className={cls.productCard} onClick={() => getInfoProduct(id)}>
         {title ? <img src={image} alt='img' /> : <Spiner />}
         <p className={cls.title}>{title}</p>
       </div>
@@ -54,7 +56,7 @@ export const CardProduct = ({
         <p className={cls.price}>{price}$</p>
         {id === productId ? (
           <div className={cls.clikedBlock}>
-            <Basket />
+            <Basket id={id}/>
           </div>
         ) : null}
       </div>
