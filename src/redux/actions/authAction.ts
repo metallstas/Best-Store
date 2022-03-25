@@ -19,6 +19,18 @@ const loginSuccess = (profile: IRegistration) => {
   return { type: ACTIONS.LOGIN, ...profile }
 }
 
+const checkUser = (user: IRegistration) => {
+  return {type: ACTIONS.GET_USER, user}
+}
+
+export const EmailChange = (newEmail: string) => {
+  return { type: ACTIONS.CHANGE_EMAIL, newEmail }
+}
+
+export const NumberPhoneChange = (newNumberPhone: string) => {
+  return { type: ACTIONS.CHANGE_NUMBER_PHONE, newNumberPhone }
+}
+
 export const errorLogin = (error: string) => {
   return { type: ACTIONS.ERROR_LOGIN, errorLogin: error }
 }
@@ -27,7 +39,7 @@ export const goOutProfile = () => {
   localStorage.removeItem('email')
   localStorage.removeItem('password')
 
-  return { type: ACTIONS.GO_OUT_PROFILE}
+  return { type: ACTIONS.GO_OUT_PROFILE }
 }
 
 const createBasket = async (id: string, email: string) => {
@@ -36,7 +48,7 @@ const createBasket = async (id: string, email: string) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ id, email, basketProducts: []}),
+    body: JSON.stringify({ id, email, basketProducts: [] }),
   })
   const data = await resp.json()
   return data
@@ -48,10 +60,55 @@ const createFavorites = async (id: string, email: string) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ id, email, productsFavorites: []}),
+    body: JSON.stringify({ id, email, productsFavorites: [] }),
   })
   const data = await resp.json()
   return data
+}
+
+const getUser = async (userId: string) => {
+  const resp = await fetch(`http://localhost:3005/profile/${userId}`)
+  const data = await resp.json()
+  return data
+}
+
+export const fetchGetUser = (userId: string) => {
+  return async (dispatch: Dispatch) => {
+    const resp = await fetch(`http://localhost:3005/profile/${userId}`)
+    const data = await resp.json()
+    dispatch(checkUser(data))
+  }
+}
+
+export const fetchChangeEmail = (email: string, userId: string) => {
+  return async (dispatch: Dispatch) => {
+    if (userId) {
+      localStorage.setItem('email', email)
+      const user = await getUser(userId)
+      const resp = await fetch(`http://localhost:3005/profile/${userId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...user, email }),
+      })
+      const data = await resp.json()
+    }
+  }
+}
+
+export const fetchChangeNumberPhone = (numberPhone: string, userId: string) => {
+  return async (dispatch: Dispatch) => {
+    const user = await getUser(userId)
+    const resp = await fetch(`http://localhost:3005/profile/${userId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ...user, numberPhone }),
+    })
+    const data = await resp.json()
+  }
 }
 
 export const registration = ({
@@ -63,12 +120,11 @@ export const registration = ({
     try {
       const id = idGenerator()
       const result = await registerUser({ email, password, id, numberPhone })
-      const basket = await createBasket(id, email)
-      const favorites = await createFavorites(id, email)
+      await createBasket(id, email)
+      await createFavorites(id, email)
       dispatch(registerSuccess(result))
       dispatch(confirmRegister(true))
-    } catch (error: any) {
-    }
+    } catch (error: any) {}
   }
 }
 
@@ -97,7 +153,6 @@ export const init = () => {
     const password = localStorage.getItem('password')
     if (email && password) {
       const result = await loginUser(email, password)
-      console.log(result)
       dispatch(loginSuccess(result[0]))
     }
   }

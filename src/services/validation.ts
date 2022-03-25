@@ -23,7 +23,7 @@ const WRONG_PASSWORD_LENGTH =
 const WRONG_REPEATED_PASSWORD = "Пароли не совпадают";
 const WRONG_PHONE_NUMBER_LENGTH = "Номер телефона должен состоять из 7 цифр и кода +375**"
 const WRONG_PHONE_NUMBER = "Номер телефона должен состоять из цифр"
-
+const ENTER_NUMBER_PHONE = "Введите номер телефона"
 const NOT_ERROR = "";
 
 class ValidationService {
@@ -52,15 +52,16 @@ class ValidationService {
   }
 
   public validateNumberPhone(numberPhone: string) {
+    console.log(Number.isNaN(numberPhone))
     if(!numberPhone) {
-      return REQUIRED_FIELD
+      return ENTER_NUMBER_PHONE
     }
 
-    if(Number.isNaN(numberPhone)) {
+    if(Number.isNaN(+numberPhone)) {
       return WRONG_PHONE_NUMBER
     }
 
-    if(numberPhone.length < 13) {
+    if(numberPhone.length < 13 || numberPhone.length > 13) {
       return WRONG_PHONE_NUMBER_LENGTH
     }
 

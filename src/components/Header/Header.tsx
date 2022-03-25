@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { fetchGetBasketProducts } from '../../redux/actions/basketAction'
 import { fetchCategories } from '../../redux/actions/categoriesAction'
+import { fetchGetFavoriteProducts } from '../../redux/actions/favoritesAction'
 import {
   closeMenu,
   openMenu,
@@ -13,6 +14,7 @@ import {
   searchText,
 } from '../../redux/actions/productCategoryAction'
 import { IState } from '../../redux/store'
+// import { CSSTransition } from 'react-transition-group'
 import { HeaderMenu } from '../HeaderMenu/HeaderMenu'
 import { Login } from '../Login/Login'
 import cls from './Header.module.css'
@@ -36,6 +38,7 @@ export const Header = () => {
 
   useEffect(() => {
     dispatch(fetchGetBasketProducts(userId))
+    dispatch(fetchGetFavoriteProducts(userId))
   },[userId])
 
   const menuOpenHandler = () => {
@@ -152,7 +155,22 @@ export const Header = () => {
             </div>
           </div>
         </div>
-        {isOpen ? <HeaderMenu /> : null}
+        {isOpen ? 
+        <>
+        {/* <CSSTransition
+        in={isOpen}
+        timeout={500}
+        mountOnEnter
+        unmountOnExit
+        classNames={{
+          enterActive: cls.navBarEnter,
+          exitActive: cls.navBarExit,
+        }}
+      > 
+       </CSSTransition> */}
+        <HeaderMenu /> 
+        </>
+        : null}
       </header>
       {isShowLogin ? <Login /> : null}
     </>

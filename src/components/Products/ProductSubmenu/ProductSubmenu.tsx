@@ -5,20 +5,18 @@ import {
   activeCategory,
   textCategory,
 } from '../../../redux/actions/categoriesAction'
-import {
-  fetchProductsSubcategory,
-  setIdProduct,
-} from '../../../redux/actions/productCategoryAction'
+import { fetchProductsSubcategory } from '../../../redux/actions/productCategoryAction'
 import { IProduct } from '../../../redux/redusers/productsCategoryReducer'
 import { IState } from '../../../redux/store'
 import cls from './ProductSubmenu.module.css'
 import { currentCategory, currenTextSubmenu } from '../../../redux/constans'
 import { CardProduct } from '../../CardProduct/CardProduct'
 import { Loading } from '../../Loading/Loading'
+import { Sort } from '../../Sort/Sort'
 
 export const ProductSubmenu = () => {
   const productsSubcategory = useSelector(
-    (state: IState) => state.productsCategoryReducer.productsSubcategory
+    (state: IState) => state.productsCategoryReducer.products
   )
   const dispatch = useDispatch()
 
@@ -31,12 +29,8 @@ export const ProductSubmenu = () => {
     dispatch(fetchProductsSubcategory(currentCategory(category), textSubmenu))
   }, [textSubmenu, category])
 
-  const a = () => {
+  const ClickctiveCategory = () => {
     dispatch(activeCategory(category))
-  }
-
-  const onMouseOverCard = (id: number) => {
-    dispatch(setIdProduct(id))
   }
 
   const productCategory = category.split(' ').join('')
@@ -45,13 +39,16 @@ export const ProductSubmenu = () => {
     <div>
       <div className={cls.container}>
         <div className={cls.naviBlock}>
-          <NavLink to='/'>Главная &#62;</NavLink>
-          <NavLink to={`/${productCategory}`} onClick={a}>
-            {textCategory(currentCategory(category))} &#62;
-          </NavLink>
-          <span className={cls.activeCategory}>
-            {currenTextSubmenu(textSubmenu)}
-          </span>
+          <div>
+            <NavLink to='/'>Главная &#62;</NavLink>
+            <NavLink to={`/${productCategory}`} onClick={ClickctiveCategory}>
+              {textCategory(currentCategory(category))} &#62;
+            </NavLink>
+            <span className={cls.activeCategory}>
+              {currenTextSubmenu(textSubmenu)}
+            </span>
+          </div>
+          <Sort />
         </div>
         <div className={cls.wrapper}>
           {productsSubcategory ? (

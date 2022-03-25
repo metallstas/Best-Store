@@ -18,9 +18,9 @@ export const Submenu = ({ textCategory }: ISubmenu) => {
   )
 
   const onClickLink = (e: SyntheticEvent<HTMLUListElement>) => {
-    if (e.currentTarget.lastChild?.nodeName === 'A') {
+    // if (e.currentTarget.lastChild?.nodeName === 'A') {
       dispatch(closeMenu())
-    }
+    // }
   }
 
   useEffect(() => {

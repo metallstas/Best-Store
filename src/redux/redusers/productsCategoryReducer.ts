@@ -18,7 +18,6 @@ export interface INewProduct {
 
 export interface IProductCategory {
   products: IProduct[]
-  productsSubcategory: IProduct[]
   idProduct: string
   newProduct: INewProduct
   searchText: string
@@ -28,7 +27,6 @@ export interface IProductCategory {
 
 const defaultState: IProductCategory = {
   products: [],
-  productsSubcategory: [],
   idProduct: '',
   newProduct: { images: { imgElectronics: '', imgMens: '' }, products: [] },
   searchText: '',
@@ -57,9 +55,6 @@ export const productsCategoryReducer = (state = defaultState, action: any) => {
   }
   if (action.type === ACTIONS.PRODUCT_SUBCATEGORY) {
     return { ...state, productsSubcategory: action.product }
-  }
-  if (action.type === ACTIONS.GET_PRODUCT_SUBCATEGORY) {
-    return { ...state, productsSubcategory: action.productSubcategory }
   }
   if (action.type === ACTIONS.SET_ID_PRODUCT) {
     return { ...state, idProduct: action.idProduct }

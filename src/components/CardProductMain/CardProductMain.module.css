@@ -41,3 +41,30 @@
 .delete:hover {
   background: rgb(255, 0, 0);
 }
+
+.countBlock button {
+  padding: 5px 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: all .5s ease;
+  cursor: pointer;
+}
+
+.countBlock button:hover {
+  background: #ccc;
+}
+
+.countBlock {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.countProduct {
+  margin-left: auto;
+  font-size: 25px;
+  font-weight: 300;
+}

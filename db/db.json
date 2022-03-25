@@ -443,12 +443,11 @@
     }
   ],
   "profile": [
-    {},
     {
       "id": "47283875153aa",
-      "email": "stas@stas.ru",
+      "email": "meatsllstas@mail.ru",
       "password": "Stas1234",
-      "numberPhone": "+375336406397"
+      "numberPhone": "+375336128264"
     }
   ],
   "news": [
@@ -539,12 +538,84 @@
       "id": "47283875153aa",
       "email": "stas@stas.ru",
       "basketProducts": []
+    },
+    {
+      "id": "1db63dbf1d13b",
+      "email": "metallstas@mail.ru",
+      "basketProducts": [
+        {
+          "category": "electronics",
+          "description": "USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system",
+          "id": 10,
+          "image": "https://i.eldorado.ua//goods/2907/2907300.jpg",
+          "price": 64,
+          "rating": {
+            "rate": 3.3,
+            "count": 203
+          },
+          "title": "WD 4TB Elements Portable External Hard Drive - USB 3.0",
+          "subcategory": "hdd"
+        }
+      ]
+    },
+    {
+      "id": "12fe28e8d14bb",
+      "email": "Saysduq@asdgi.com",
+      "basketProducts": []
+    },
+    {
+      "id": "2d7a297a58f1",
+      "email": "yquwyqwu@qysdi.ru",
+      "basketProducts": []
     }
   ],
   "favorites": [
     {
       "id": "47283875153aa",
       "email": "stas@stas.ru",
+      "productsFavorites": [
+        {
+          "category": "electronics",
+          "description": "USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system",
+          "id": 10,
+          "image": "https://i.eldorado.ua//goods/2907/2907300.jpg",
+          "price": 64,
+          "rating": {
+            "rate": 3.3,
+            "count": 203
+          },
+          "title": "WD 4TB Elements Portable External Hard Drive - USB 3.0",
+          "subcategory": "hdd"
+        }
+      ]
+    },
+    {
+      "id": "1db63dbf1d13b",
+      "email": "metallstas@mail.ru",
+      "productsFavorites": [
+        {
+          "category": "jewelery",
+          "description": "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
+          "id": 22,
+          "image": "https://www.dhresource.com/0x0/f2/albu/g4/M00/37/79/rBVaEFngeHmAUOWXAALY9JTieSI933.jpg",
+          "price": 95,
+          "rating": {
+            "rate": 4.6,
+            "count": 400
+          },
+          "title": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
+          "subcategory": "bracelet"
+        }
+      ]
+    },
+    {
+      "id": "12fe28e8d14bb",
+      "email": "Saysduq@asdgi.com",
+      "productsFavorites": []
+    },
+    {
+      "id": "2d7a297a58f1",
+      "email": "yquwyqwu@qysdi.ru",
       "productsFavorites": []
     }
   ]

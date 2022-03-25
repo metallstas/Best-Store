@@ -1,0 +1,16 @@
+.changeEmail {
+  position:fixed;
+  width: 300px;
+  right: 0;
+  font-weight: 500;
+  background: green;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  transform: translateX(150%);
+  transition: all 1s ease;
+}
+
+.active {
+  transform: translateX(0);
+}

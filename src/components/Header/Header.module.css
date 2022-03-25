@@ -155,3 +155,23 @@
   color: #fff;
   z-index: 5;
 }
+
+.navBarEnter {
+  animation: showNavBar 0.5s ease-in 0s 1 normal;
+}
+.navBarExit {
+  animation: showNavBar 0.5s ease-in-out 0s 1 reverse;
+}
+
+@keyframes showNavBar {
+  from {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+  }
+  to {
+    max-height: 500px;
+    overflow: auto;
+    padding: 10px;
+  }
+}

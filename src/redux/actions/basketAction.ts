@@ -6,6 +6,10 @@ const basket = (basketProducts: IProduct[]) => {
   return { type: ACTIONS.GET_PRODUCTS_BASKET, basketProducts }
 }
 
+export const changeCountPlus = (id:string, count: number) => {
+  return {type: ACTIONS.CHANGE_COUNT_PLUS, id, count}
+}
+
 export const clearBasket = () => {
   return { type: ACTIONS.CLEAR_BASKET }
 }
@@ -33,7 +37,7 @@ const fetchBasketUser = async (userId: string) => {
 const fetchProductById = async (id: string) => {
   const resp = await fetch(`http://localhost:3005/products/` + id)
   const data = await resp.json()
-  return data
+  return {...data, count: 1}
 }
 
 export const fetchPostBasketProducts = (id: string, userId: string) => {
@@ -52,6 +56,8 @@ export const fetchPostBasketProducts = (id: string, userId: string) => {
     })
 
     const data = await resp.json()
+    // dispatch(createCountProduct({id: +id, count: 1}))
+
     dispatch(basket(data.basketProducts))
   }
 }
@@ -72,3 +78,5 @@ export const fetchPUTBasket = (id: string, userId: string) => {
     })
   }
 }
+
+

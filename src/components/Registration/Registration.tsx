@@ -48,26 +48,26 @@ export const Registration = () => {
     }
   }
 
-  const onChangeEmail = useCallback((value) => {
-    setEmail(value)
-    const error = validationService.validateEmail(value)
+  const onChangeEmail = useCallback((event) => {
+    setEmail(event.target.value)
+    const error = validationService.validateEmail(event.target.value)
     setErrors((errors) => ({ ...errors, email: error }))
   }, [])
 
-  const onChangenumberPhone = useCallback((value) => {
-    setNumberPhhone(value)
-    const error = validationService.validateNumberPhone(value)
+  const onChangenumberPhone = useCallback((event) => {
+    setNumberPhhone(event.target.value)
+    const error = validationService.validateNumberPhone(event.target.value)
     setErrors((errors) => ({ ...errors, numberPhone: error }))
   }, [])
 
-  const onChangePassword = useCallback((value) => {
-    setPassword(value)
-    const error = validationService.validatePassword(value)
+  const onChangePassword = useCallback((event) => {
+    setPassword(event.target.value)
+    const error = validationService.validatePassword(event.target.value)
     setErrors((errors) => ({ ...errors, password: error }))
   }, [])
 
-  const onChangeConfirmPassword = useCallback((value) => {
-    setConfirmPassword(value)
+  const onChangeConfirmPassword = useCallback((event) => {
+    setConfirmPassword(event.target.value)
   }, [])
 
   return (

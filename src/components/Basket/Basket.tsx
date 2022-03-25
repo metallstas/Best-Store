@@ -25,10 +25,15 @@ export const Basket = ({ id }: IBasket) => {
   const userId = useSelector((state: IState) => state.authReducer.id)
 
   const isProductBasket = basketProducts
-    ? basketProducts.some((el: IProduct) => el.id === id)
+    ? basketProducts.some((el: IProduct) => {
+        return el.id.toString() === id.toString()
+      })
     : null
+
   const isfavoriteProducts = favoriteProducts
-    ? favoriteProducts.some((el: IProduct) => el.id === id)
+    ? favoriteProducts.some(
+        (el: IProduct) => el.id.toString() === id.toString()
+      )
     : null
 
   const onClickBasket = () => {
@@ -50,7 +55,11 @@ export const Basket = ({ id }: IBasket) => {
           В корзину
         </button>
       ) : (
-        <button className={cls.btnBasket}>В корзине</button>
+        <>
+          <div>
+            <button className={cls.btnBasket}>В корзине</button>
+          </div>
+        </>
       )}
       {!isfavoriteProducts ? (
         <Logo onClick={onClickFavorites} className={cls.svg} />

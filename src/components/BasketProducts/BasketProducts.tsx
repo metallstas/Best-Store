@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchGetBasketProducts } from '../../redux/actions/basketAction'
+import { IBasketProduct } from '../../redux/redusers/basketReducer'
 import { IProduct } from '../../redux/redusers/productsCategoryReducer'
 import { IState } from '../../redux/store'
 import { Button } from '../Button/Button'
@@ -15,12 +16,11 @@ export const BasketProducts = () => {
   const products = useSelector(
     (state: IState) => state.basketReducer.basketProducts
   )
-  console.log('inside!!!!!!!', products)
 
   const totalSum = () => {
     if (products) {
-      const total = products.reduce((acc: number, current: IProduct) => {
-        return acc + +current.price
+      const total = products.reduce((acc: number, current: IBasketProduct) => {
+        return acc + (+current.price * current.count)
       }, 0)
       setTotal(total)
     } else {
@@ -52,7 +52,7 @@ export const BasketProducts = () => {
       <div className={cls.container}>
         <div className={cls.productWrap}>
           {products && products.length ? (
-            products.map((product: IProduct) => {
+            products.map((product: IBasketProduct) => {
               return (
                 <CardProductMain
                   id={product.id}
@@ -63,6 +63,7 @@ export const BasketProducts = () => {
                   image={product.image}
                   isdelete={true}
                   key={product.id}
+                  count={product.count}
                 />
               )
             })

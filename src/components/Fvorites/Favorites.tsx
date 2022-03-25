@@ -13,9 +13,10 @@ export const Favorites = () => {
   const products = useSelector(
     (state: IState) => state.favoritesReducer.productsFavorites
   )
-  console.log('inside',products)
   useEffect(() => {
-    dispatch(fetchGetFavoriteProducts(userId))
+    if (userId) {
+      dispatch(fetchGetFavoriteProducts(userId))
+    }
   }, [userId])
 
   return (

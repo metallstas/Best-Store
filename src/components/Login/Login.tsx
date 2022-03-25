@@ -31,13 +31,13 @@ export const Login = () => {
     dispatch(errorLogin(''))
   }, [])
 
-  const onChangePassword = useCallback((value) => {
-    setPassword(value)
+  const onChangePassword = useCallback((event) => {
+    setPassword(event.target.value)
   }, [])
 
-  const onChangeEmail = useCallback((value) => {
-    setEmail(value)
-    const error = validationService.validateEmail(value)
+  const onChangeEmail = useCallback((event) => {
+    setEmail(event.target.value)
+    const error = validationService.validateEmail(event.target.value)
     setErrors((errors) => ({ ...errors, email: error }))
   }, [])
 

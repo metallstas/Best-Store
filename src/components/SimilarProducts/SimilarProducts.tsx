@@ -16,7 +16,7 @@ export const SimilarProducts = ({
 }: ISimiliarProducts) => {
   const dispatch = useDispatch()
   const products = useSelector(
-    (state: IState) => state.productsCategoryReducer.productsSubcategory
+    (state: IState) => state.productsCategoryReducer.products
   )
   useEffect(() => {
     dispatch(fetchProductsSubcategory(category, subcategory))

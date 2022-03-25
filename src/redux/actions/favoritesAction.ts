@@ -16,12 +16,12 @@ export const deleteProductFavorite = (id: string) => {
 
 export const fetchGetFavoriteProducts = (userId: string) => {
   return async (dispatch: Dispatch) => {
-    const response = await fetch('http://localhost:3005/favorites/' + userId)
-    const data = await response.json()
+    if (userId) {
+      const response = await fetch('http://localhost:3005/favorites/' + userId)
+      const data = await response.json()
 
-    console.log('FAVORITES', data)
-
-    dispatch(favorites(data.productsFavorites))
+      dispatch(favorites(data.productsFavorites))
+    }
   }
 }
 
@@ -41,7 +41,6 @@ export const fetchPostFavoriteProducts = (id: string, userId: string) => {
   return async (dispatch: Dispatch) => {
     const dataProduct = await fetchProductById(id)
     const user = await fetchFavoriteUser(userId)
-    console.log('basket.User', user.basketProducts)
     const resp = await fetch(`http://localhost:3005/favorites/${userId}`, {
       method: 'PUT',
       headers: {
@@ -55,8 +54,6 @@ export const fetchPostFavoriteProducts = (id: string, userId: string) => {
 
     const data = await resp.json()
     dispatch(favorites(data.productsFavorites))
-
-    console.log('datafavorites', data.basketProducts)
   }
 }
 
@@ -71,7 +68,9 @@ export const fetchPutFavorite = (id: string, userId: string) => {
       },
       body: JSON.stringify({
         ...user,
-        productsFavorites: user.productsFavorites.filter((el: any) => el.id !== id),
+        productsFavorites: user.productsFavorites.filter(
+          (el: any) => el.id !== id
+        ),
       }),
     })
   }
