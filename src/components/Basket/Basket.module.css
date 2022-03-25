@@ -1,0 +1,56 @@
+.productClicked {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.btnBasketAdd {
+  background: rgb(72, 105, 53);;
+  border: 1px solid #ccc;
+  padding: 5px 80px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 100;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btnBasket {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 5px 80px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 100;
+  cursor: pointer;
+}
+
+.svg {
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+  fill: rgb(202, 202, 202);
+  stroke: #000;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 3px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.svg:hover {
+  fill:rgb(233, 27, 27);
+}
+
+.svgAdded {
+    width: 25px;
+  height: 25px;
+  margin-left: 10px;
+  fill: rgb(233, 27, 27);
+  stroke: #000;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 3px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}

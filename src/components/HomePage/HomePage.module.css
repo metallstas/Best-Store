@@ -1,0 +1,23 @@
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.img {
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.cardMainWrap {
+  display: flex;
+  margin: 15px 0;
+}
+
+.nameImage h2 {
+  font-size: 45px;
+  font-weight: 300;
+  margin: 15px 0;
+}

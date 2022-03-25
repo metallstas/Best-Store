@@ -1,0 +1,10 @@
+.confirmRegister {
+  margin: 40px 50px;
+  width: 500px;
+  text-align: center;
+}
+
+.confirmRegister h2 {
+  font-size: 40px;
+  font-weight: 300;
+}

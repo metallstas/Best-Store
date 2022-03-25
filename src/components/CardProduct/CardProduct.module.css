@@ -1,0 +1,30 @@
+.product {
+  position: relative;
+  width: min-content;
+  padding: 5px;
+  margin: 15px 15px 45px 15px;
+  padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product img {
+  width: 300px;
+  height: auto;
+}
+
+.title {
+  padding: 10px 0;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.price {
+  font-size: 25px;
+}
+
+.clikedBlock {
+  position: absolute;
+  bottom: -40px;
+}

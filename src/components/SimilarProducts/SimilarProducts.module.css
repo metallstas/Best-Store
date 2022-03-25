@@ -1,0 +1,14 @@
+.similaProductWrap {
+  font-size: 40px;
+  font-weight: 300;
+  margin-top: 100px;
+}
+
+.similarProductText {
+  margin: 30px 10px;
+}
+
+.similarProduct {
+  display: flex;
+  flex-wrap: wrap;
+}
