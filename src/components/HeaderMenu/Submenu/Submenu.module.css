@@ -1,6 +1,6 @@
 .submenu {
   width: 100%;
-  background: #fff;
+  background: #d6d6d6;
   padding: 10px 10px;
   flex: 3;
 }
@@ -17,10 +17,11 @@
   color: #000;
   font-size: 20px;
   font-weight: 300;
+  transition: all .5s ease;
 }
 
 .submenu a:hover {
- color: rgb(97, 170, 97);
+  transform: translateX(10px);
 }
 
 .submenuItem {

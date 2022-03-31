@@ -29,6 +29,14 @@ export const authReducer = (state = defaultState, action: any) => {
     }
   }
 
+  if (action.type === ACTIONS.CHANGE_EMAIL) {
+    return {...state, email: action.newEmail}
+  }
+
+  if (action.type === ACTIONS.CHANGE_NUMBER_PHONE) {
+    return {...state, numberPhone: action.newNumberPhone}
+  }
+
   if (action.type === ACTIONS.LOGIN) {
     return {
       ...state,
@@ -38,6 +46,10 @@ export const authReducer = (state = defaultState, action: any) => {
       numberPhone: action.numberPhone,
       isLoggedIn: true,
     }
+  }
+
+  if (action.type === ACTIONS.GET_USER) {
+    return {...state, ...action.user}
   }
 
   if (action.type === ACTIONS.ERROR_LOGIN) {

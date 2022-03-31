@@ -1,4 +1,3 @@
-import { SyntheticEvent } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { showSearch } from '../../redux/actions/headeAction'
@@ -56,7 +55,7 @@ export const CardProduct = ({
         <p className={cls.price}>{price}$</p>
         {id === productId ? (
           <div className={cls.clikedBlock}>
-            <Basket id={id}/>
+            <Basket id={id} />
           </div>
         ) : null}
       </div>

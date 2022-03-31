@@ -9,6 +9,7 @@ import {
   fetchPutFavorite,
 } from '../../redux/actions/favoritesAction'
 
+
 interface IBasket {
   id: string
 }
@@ -21,22 +22,30 @@ export const Basket = ({ id }: IBasket) => {
   const favoriteProducts = useSelector(
     (state: IState) => state.favoritesReducer.productsFavorites
   )
-
   const userId = useSelector((state: IState) => state.authReducer.id)
 
   const isProductBasket = basketProducts
-    ? basketProducts.some((el: IProduct) => el.id === id)
+    ? basketProducts.some((el: IProduct) => el.id.toString() === id.toString())
     : null
+
   const isfavoriteProducts = favoriteProducts
-    ? favoriteProducts.some((el: IProduct) => el.id === id)
+    ? favoriteProducts.some(
+        (el: IProduct) => el.id.toString() === id.toString()
+      )
     : null
 
   const onClickBasket = () => {
-    dispatch(fetchPostBasketProducts(id, userId))
+    if (userId) {
+      dispatch(fetchPostBasketProducts(id, userId))
+      return
+    }
   }
 
   const onClickFavorites = () => {
-    dispatch(fetchPostFavoriteProducts(id, userId))
+    if (userId) {
+      dispatch(fetchPostFavoriteProducts(id, userId))
+      return
+    }
   }
 
   const onClickRemoveFavorite = () => {
@@ -50,8 +59,11 @@ export const Basket = ({ id }: IBasket) => {
           В корзину
         </button>
       ) : (
-        <button className={cls.btnBasket}>В корзине</button>
+        <div>
+          <button className={cls.btnBasket}>В корзине</button>
+        </div>
       )}
+
       {!isfavoriteProducts ? (
         <Logo onClick={onClickFavorites} className={cls.svg} />
       ) : (

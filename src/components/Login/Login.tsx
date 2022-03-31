@@ -19,6 +19,9 @@ export const Login = () => {
   const isLoggedIn = useSelector(
     (state: IState) => state.authReducer.isLoggedIn
   )
+  const currentTheme = useSelector(
+    (state: IState) => state.themeReducer.currentTheme
+  )
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState({
@@ -31,13 +34,13 @@ export const Login = () => {
     dispatch(errorLogin(''))
   }, [])
 
-  const onChangePassword = useCallback((value) => {
-    setPassword(value)
+  const onChangePassword = useCallback((event) => {
+    setPassword(event.target.value)
   }, [])
 
-  const onChangeEmail = useCallback((value) => {
-    setEmail(value)
-    const error = validationService.validateEmail(value)
+  const onChangeEmail = useCallback((event) => {
+    setEmail(event.target.value)
+    const error = validationService.validateEmail(event.target.value)
     setErrors((errors) => ({ ...errors, email: error }))
   }, [])
 
@@ -65,7 +68,10 @@ export const Login = () => {
         className={cls.background}
         onClick={() => dispatch(showLogin(false))}
       ></div>
-      <div className={cls.login}>
+      <div
+        style={{ background: currentTheme.background }}
+        className={cls.login}
+      >
         {showReg ? (
           <Registration />
         ) : (
@@ -91,7 +97,10 @@ export const Login = () => {
             {errorLoginText ? (
               <p style={{ color: 'red' }}>{errorLoginText}</p>
             ) : null}
-            <p className={cls.registerText} onClick={() => dispatch(showRegistration(true))}>
+            <p
+              className={cls.registerText}
+              onClick={() => dispatch(showRegistration(true))}
+            >
               Зарегистрироваться
             </p>
             <button onClick={onCLick}>Войти</button>

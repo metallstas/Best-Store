@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchGetBasketProducts } from '../../redux/actions/basketAction'
-import { IProduct } from '../../redux/redusers/productsCategoryReducer'
+import { IBasketProduct } from '../../redux/redusers/basketReducer'
 import { IState } from '../../redux/store'
 import { Button } from '../Button/Button'
 import { CardProductMain } from '../CardProductMain/CardProductMain'
@@ -15,12 +15,14 @@ export const BasketProducts = () => {
   const products = useSelector(
     (state: IState) => state.basketReducer.basketProducts
   )
-  console.log('inside!!!!!!!', products)
+  const currentTheme = useSelector(
+    (state: IState) => state.themeReducer.currentTheme
+  )
 
   const totalSum = () => {
     if (products) {
-      const total = products.reduce((acc: number, current: IProduct) => {
-        return acc + +current.price
+      const total = products.reduce((acc: number, current: IBasketProduct) => {
+        return acc + +current.price * current.count
       }, 0)
       setTotal(total)
     } else {
@@ -38,12 +40,15 @@ export const BasketProducts = () => {
 
   return (
     <section>
-      <div className={cls.background}>
+      <div style={{ background: currentTheme.backgroundHeader }}>
         <div className={cls.container}>
           <div className={cls.orderWrap}>
-            <p>Корзина</p>
+            <p style={{ color: currentTheme.colorText }}>Корзина</p>
             <div className={cls.order}>
-              <p>Сумма заказа: {total.toFixed(2)}$</p>
+              <p style={{ display: 'flex', color: currentTheme.colorText }}>
+                Сумма заказа: &nbsp; 
+                <span className={cls.totalSum}>{total.toFixed(2)}$</span>
+              </p>
               <Button text={'Оформить заказ'} />
             </div>
           </div>
@@ -52,7 +57,7 @@ export const BasketProducts = () => {
       <div className={cls.container}>
         <div className={cls.productWrap}>
           {products && products.length ? (
-            products.map((product: IProduct) => {
+            products.map((product: IBasketProduct) => {
               return (
                 <CardProductMain
                   id={product.id}
@@ -63,6 +68,7 @@ export const BasketProducts = () => {
                   image={product.image}
                   isdelete={true}
                   key={product.id}
+                  count={product.count}
                 />
               )
             })

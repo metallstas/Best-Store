@@ -1,12 +1,7 @@
-.background {
-  background: rgb(239, 240, 241);
-}
-
 .container {
   max-width: 1200px;
   width: 100%;
   margin: 0px auto;
-  /* margin-top: 20px; */
   padding: 40px 0px;
 }
 
@@ -32,4 +27,9 @@
   display: flex;
   flex-wrap: wrap;
   margin: 0 25px;
+}
+
+.totalSum {
+  display: block;
+  width: 200px;
 }

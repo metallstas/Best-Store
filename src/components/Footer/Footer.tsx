@@ -1,15 +1,27 @@
+import { useSelector } from 'react-redux'
+import { IState } from '../../redux/store'
 import cls from './Footer.module.css'
 import { ReactComponent as Telegram } from './telegram.svg'
 import { ReactComponent as Viber } from './viber.svg'
 import { ReactComponent as WA } from './wa.svg'
 
 export const Footer = () => {
+  const currentTheme = useSelector(
+    (state: IState) => state.themeReducer.currentTheme
+  )
+
   return (
-    <footer className={cls.footer}>
+    <footer
+      style={{ background: currentTheme.backgroundFooter }}
+      className={cls.footer}
+    >
       <div className={cls.container}>
         <div className={cls.payBlock}>
           <div>
-            <div className={cls.descriptionStore}>
+            <div
+              style={{ color: currentTheme.colorTextFooter }}
+              className={cls.descriptionStore}
+            >
               Интернет-магазин одежды, электроники и аксессуаров мировых
               брендов. Бесплатная доставка с примеркой по всей Беларуси.
               Самовывоз из фирменных салонов сети.
@@ -49,7 +61,7 @@ export const Footer = () => {
                   <WA />
                 </a>
               </div>
-              <p>
+              <p style={{ color: currentTheme.colorTextFooter }}>
                 Время работы: пн-вс с 09:00 до 21:00, Заказы через корзину
                 круглосуточно
               </p>
@@ -59,8 +71,16 @@ export const Footer = () => {
         <div className={cls.borderBottom}></div>
 
         <div className={cls.footerLegal}>
-          <div className={cls.footerCopy}>© 2022 Best Store</div>
-          <div className={cls.footerCopyText}>
+          <div
+            style={{ color: currentTheme.colorTextFooter }}
+            className={cls.footerCopy}
+          >
+            © 2022 Best Store
+          </div>
+          <div
+            className={cls.footerCopyText}
+            style={{ color: currentTheme.colorTextFooter }}
+          >
             ОДО «БелВиринея». УНП 190706320. 06.04.2006. Минский горисполком.
             Юр.адрес: г. Минск, ул. Немига, 5, пом. 39. Интернет-магазин fh.by
             зарегистрирован в Торговом реестре Республики Беларусь 14.11.2019
@@ -68,7 +88,12 @@ export const Footer = () => {
             круглосуточно. Телефоны: +375 (29) 633-2-633, +375 (17) 328-60-79.
             E-mail: fh@fh.by
           </div>
-          <div className={cls.footerDev}>Разработано StackAdvance</div>
+          <div
+            style={{ color: currentTheme.colorTextFooter }}
+            className={cls.footerDev}
+          >
+            Разработано StackAdvance
+          </div>
         </div>
       </div>
     </footer>

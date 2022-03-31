@@ -7,14 +7,16 @@ import { Submenu } from './Submenu/Submenu'
 
 export const HeaderMenu = () => {
   const [idCategory, setIdCategory] = useState<string>('')
-
+  const currentTheme = useSelector((state: IState) => state.themeReducer.currentTheme)
   const categories = useSelector(
     (state: IState) => state.categoriesReducer.categories
   )
+  const isDark = useSelector((state: IState) => state.themeReducer.isDark)
+  const classActive = !isDark ? `${cls.categoryActive}` : `${cls.categoryActiveDark}`
 
   return (
-    <div className={cls.menu}>
-      <div className={cls.container}>
+    <div style={{background: currentTheme.backgroundHeader}} className={cls.menu}>
+      <div style={{background: currentTheme.backgroundHeader}} className={cls.container}>
         <div className={cls.categoriesWrap}>
           <ul>
             {categories.map((item) => {
@@ -25,7 +27,7 @@ export const HeaderMenu = () => {
                   className={
                     item === idCategory ||
                     (idCategory === '' && item === 'electronics')
-                      ? `${cls.category} ${cls.categoryActive}`
+                      ? `${cls.category} ${classActive}`
                       : `${cls.category}`
                   }
                   onMouseOver={(e) => {

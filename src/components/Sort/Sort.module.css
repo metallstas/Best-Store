@@ -1,0 +1,9 @@
+.sort {
+  display: flex;
+}
+
+.sort p {
+  margin: 10px 10px;
+  font-weight: 300;
+  cursor: pointer;
+}

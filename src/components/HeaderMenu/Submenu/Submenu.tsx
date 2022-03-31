@@ -1,4 +1,4 @@
-import { SyntheticEvent, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { closeMenu } from '../../../redux/actions/headeAction'
@@ -16,11 +16,13 @@ export const Submenu = ({ textCategory }: ISubmenu) => {
   const subcategory = useSelector(
     (state: IState) => state.productsCategoryReducer.subcategory
   )
+  const currentTheme = useSelector(
+    (state: IState) => state.themeReducer.currentTheme
+  )
+  const isDark = useSelector((state: IState) => state.themeReducer.isDark)
 
-  const onClickLink = (e: SyntheticEvent<HTMLUListElement>) => {
-    if (e.currentTarget.lastChild?.nodeName === 'A') {
-      dispatch(closeMenu())
-    }
+  const onClickLink = () => {
+    dispatch(closeMenu())
   }
 
   useEffect(() => {
@@ -28,21 +30,36 @@ export const Submenu = ({ textCategory }: ISubmenu) => {
   }, [textCategory])
 
   return (
-    <div className={cls.submenu}>
-      <ul onClick={onClickLink}>
+    <div
+      style={{ background: isDark ? ' #5f5f5f' : '' }}
+      className={cls.submenu}
+    >
+      <ul>
         {!textCategory ? (
-          <>
+          <div
+            onClick={onClickLink}
+            style={{ color: currentTheme.colorTextFooter }}
+          >
             <NavLink to='/electronics/hdd'>Жесткие Диски</NavLink>
             <NavLink to='/electronics/ssd'>SSD</NavLink>
             <NavLink to='/electronics/tv'>Телевизоры</NavLink>
-          </>
+          </div>
         ) : null}
         {subcategory
           ? subcategory.map((text: string) => {
               return (
-                <NavLink key={text} to={`/${textCategory.split(' ').join('')}/${text}`}>
-                  {currenTextSubmenu(text)}
-                </NavLink>
+                <div
+                  onClick={onClickLink}
+                  style={{ color: currentTheme.colorTextFooter }}
+                  key={text}
+                >
+                  <NavLink
+                    key={text}
+                    to={`/${textCategory.split(' ').join('')}/${text}`}
+                  >
+                    {currenTextSubmenu(text)}
+                  </NavLink>
+                </div>
               )
             })
           : null}

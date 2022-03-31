@@ -2,12 +2,8 @@ import { Dispatch } from 'redux'
 import { ACTIONS } from '../constans'
 import { INewProduct, IProduct } from '../redusers/productsCategoryReducer'
 
-const productsCategory = (products: IProduct[]) => {
+export const productsCategory = (products: IProduct[]) => {
   return { type: ACTIONS.PRODUCTS_CATEGORY, products }
-}
-
-const productSubcategory = (products: IProduct[]) => {
-  return { type: ACTIONS.GET_PRODUCT_SUBCATEGORY, productSubcategory: products }
 }
 
 const newProduct = (newProduct: INewProduct) => {
@@ -56,7 +52,7 @@ export const fetchProductsSubcategory = (
       `http://localhost:3005/products?category=${category}&subcategory=${subcategory}`
     )
     const data = await resp.json()
-    dispatch(productSubcategory(data))
+    dispatch(productsCategory(data))
   }
 }
 

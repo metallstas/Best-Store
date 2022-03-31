@@ -7,7 +7,6 @@ export const ACTIONS = {
   OPEN_MENU: 'OPEN_MENU',
   SHOW_SEARCH: 'SHOW_SEARCH',
   PRODUCT_SUBCATEGORY: 'PRODUCT_SUBCATEGORY',
-  GET_PRODUCT_SUBCATEGORY: 'GET_PRODUCT_SUBCATEGORY',
   SET_ID_PRODUCT: 'SET_ID_PRODUCT',
   NEW_PRODUCTS: 'NEW_PRODUCTS',
   SEARCH_PRODUCT: 'SEARCH_PRODUCT',
@@ -27,6 +26,13 @@ export const ACTIONS = {
   GET_PRODUCTS_FAVORITES: 'GET_PRODUCTS_FAVORITES',
   DELETE_PRODUCT_FAVORITE: 'DELETE_PRODUCT_FAVORITE',
   CLEAR_FAVORITES: 'CLEAR_FAVORITES',
+  CHANGE_EMAIL: 'CHANGE_EMAIL',
+  CHANGE_NUMBER_PHONE: 'CHANGE_NUMBER_PHONE',
+  GET_USER: 'GET_USER',
+  CHANGE_COUNT_PLUS: 'CHANGE_COUNT_PLUS',
+  CHANGE_IS_DARK: 'CHANGE_IS_DARK',
+  INIT_THEME: 'INIT_THEME',
+  ADD_BASKET_LOCAL: 'ADD_BASKET_LOCAL'
 }
 
 export const currenTextSubmenu = (textSubmenu: string) => {
@@ -64,10 +70,10 @@ export const currenTextSubmenu = (textSubmenu: string) => {
 }
 
 export const currentCategory = (category: string) => {
-  if(category === "men'sclothing") {
+  if (category === "men'sclothing") {
     return "men's clothing"
   }
-  if(category === "women'sclothing") {
+  if (category === "women'sclothing") {
     return "women's clothing"
   }
   return category
