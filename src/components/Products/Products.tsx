@@ -22,7 +22,6 @@ import { Sort } from '../Sort/Sort'
 export const Products = () => {
   const location = useLocation()
   const dispatch = useDispatch()
-
   const products = useSelector(
     (state: IState) => state.productsCategoryReducer.products
   )
@@ -47,48 +46,48 @@ export const Products = () => {
 
   return (
     <section>
-      <div className={cls.container} style={{ display: 'flex' }}>
-        <div className={cls.container}>
-          <div className={cls.naviBlock}>
-            <div>
-              <NavLink
-                to='/'
-                onClick={() => {
-                  dispatch(closeMenu())
-                }}
-              >
-                Главная &#62;
-              </NavLink>
-              <span className={cls.activeCategory}>
-                {textCategory(currentCategory(category))}
-              </span>
+        <div className={cls.container} style={{ display: 'flex' }}>
+          <div className={cls.container}>
+            <div className={cls.naviBlock}>
+              <div>
+                <NavLink
+                  to='/'
+                  onClick={() => {
+                    dispatch(closeMenu())
+                  }}
+                >
+                  Главная &#62;
+                </NavLink>
+                <span className={cls.activeCategory}>
+                  {textCategory(currentCategory(category))}
+                </span>
+              </div>
+              <Sort />
             </div>
-            <Sort />
-          </div>
-          <div className={cls.wrapper}>
-            {products ? (
-              products.map((product: IProduct) => {
-                return (
-                  <CardProduct
-                    key={product.id}
-                    category={product.category}
-                    id={product.id}
-                    title={product.title}
-                    image={product.image}
-                    price={product.price}
-                    subcategory={product.subcategory}
-                  />
-                )
-              })
-            ) : (
-              <Loading />
-            )}
-            {products.length === 0 ? (
-              <NoProducts text='Извините, товары не найдены' />
-            ) : null}
+            <div className={cls.wrapper}>
+              {products ? (
+                products.map((product: IProduct) => {
+                  return (
+                    <CardProduct
+                      key={product.id}
+                      category={product.category}
+                      id={product.id}
+                      title={product.title}
+                      image={product.image}
+                      price={product.price}
+                      subcategory={product.subcategory}
+                    />
+                  )
+                })
+              ) : (
+                <Loading />
+              )}
+              {products.length === 0 ? (
+                <NoProducts text='Извините, товары не найдены' />
+              ) : null}
+            </div>
           </div>
         </div>
-      </div>
     </section>
   )
 }

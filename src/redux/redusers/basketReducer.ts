@@ -31,13 +31,16 @@ export const basketReducer = (state = defaultState, action: any) => {
     return { defaultState }
   }
 
-  if(action.type === ACTIONS.CHANGE_COUNT_PLUS) {
-    return {...state, basketProducts: state.basketProducts.map((el: IBasketProduct) => {
-      if(el.id === action.id) {
-        return {...el, count: action.count}
-      }
-      return el
-    })}
+  if (action.type === ACTIONS.CHANGE_COUNT_PLUS) {
+    return {
+      ...state,
+      basketProducts: state.basketProducts.map((el: IBasketProduct) => {
+        if (el.id === action.id) {
+          return { ...el, count: action.count }
+        }
+        return el
+      }),
+    }
   }
 
   return state

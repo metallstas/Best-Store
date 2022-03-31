@@ -30,6 +30,9 @@ export const ACTIONS = {
   CHANGE_NUMBER_PHONE: 'CHANGE_NUMBER_PHONE',
   GET_USER: 'GET_USER',
   CHANGE_COUNT_PLUS: 'CHANGE_COUNT_PLUS',
+  CHANGE_IS_DARK: 'CHANGE_IS_DARK',
+  INIT_THEME: 'INIT_THEME',
+  ADD_BASKET_LOCAL: 'ADD_BASKET_LOCAL'
 }
 
 export const currenTextSubmenu = (textSubmenu: string) => {
@@ -67,10 +70,10 @@ export const currenTextSubmenu = (textSubmenu: string) => {
 }
 
 export const currentCategory = (category: string) => {
-  if(category === "men'sclothing") {
+  if (category === "men'sclothing") {
     return "men's clothing"
   }
-  if(category === "women'sclothing") {
+  if (category === "women'sclothing") {
     return "women's clothing"
   }
   return category

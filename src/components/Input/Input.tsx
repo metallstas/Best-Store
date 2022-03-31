@@ -1,4 +1,6 @@
 import { ChangeEvent, FocusEvent, KeyboardEvent } from 'react'
+import { useSelector } from 'react-redux'
+import { IState } from '../../redux/store'
 import cls from './Input.module.css'
 
 interface IInput {
@@ -22,6 +24,8 @@ export const Input = ({
   error,
   placeholder,
 }: IInput) => {
+  const currentTheme = useSelector((state: IState) => state.themeReducer.currentTheme)
+
   return (
     <label>
       {label ? <p>{label}</p> : null}
@@ -34,7 +38,7 @@ export const Input = ({
         value={value}
         placeholder={placeholder}
       />
-      {error ? <p className={cls.error}>{error}</p> : null}
+      {error ? <p style={{color: currentTheme.colorTextError}} className={cls.error}>{error}</p> : null}
     </label>
   )
 }

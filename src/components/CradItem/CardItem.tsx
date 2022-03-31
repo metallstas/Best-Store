@@ -18,8 +18,8 @@ export const CardItem = () => {
     (state: IState) => state.productsCategoryReducer.productId
   )
   const productCategory = productItem.category.split(' ').join('')
-
   const dispatch = useDispatch()
+  
   useEffect(() => {
     if (id) {
       dispatch(fetchProductId(id))
@@ -57,7 +57,7 @@ export const CardItem = () => {
               <p>Бесплатная доставка за 2 часа по Минску</p>
             </div>
             <div>
-              <img src='/images/deliveryv2.png' alt='delivery' />
+              <img src='/images/delivery.png' alt='delivery' />
               <p>Бесплатная доставка по Беларуси</p>
             </div>
           </div>

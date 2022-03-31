@@ -49,18 +49,6 @@ export const ProfileData = () => {
     setNumberPhoneOk(false)
   }, [])
 
-  const accessChangeEmail = () => {
-    setTimeout(() => {
-      setEmailOk(false)
-    }, 3000)
-  }
-
-  const accessChangePassword = () => {
-    setTimeout(() => {
-      setNumberPhoneOk(false)
-    }, 3000)
-  }
-
   const onChangeEmail = useCallback((event) => {
     setNewEmail(() => event.target.value)
     const error = validationService.validateEmail(event.target.value)
@@ -77,7 +65,7 @@ export const ProfileData = () => {
     (event) => {
       if (event.key === 'Enter') {
         const valideEmail = validationService.validateEmail(newEmail)
-        
+
         const errorsValidate = {
           ...errors,
           email: valideEmail,
@@ -90,7 +78,9 @@ export const ProfileData = () => {
         if (isValid) {
           dispatch(fetchChangeEmail(newEmail, userId))
           setEmailOk(true)
-          accessChangeEmail()
+          setTimeout(() => {
+            setEmailOk(false)
+          }, 3000)
           return
         }
       }
@@ -101,7 +91,8 @@ export const ProfileData = () => {
   const onKeyDownNumberPhone = useCallback(
     (event) => {
       if (event.key === 'Enter') {
-        const valideNumberPhone = validationService.validateNumberPhone(newNumberPhone)
+        const valideNumberPhone =
+          validationService.validateNumberPhone(newNumberPhone)
 
         const errorsValidate = {
           ...errors,
@@ -115,7 +106,9 @@ export const ProfileData = () => {
         if (isValid) {
           dispatch(fetchChangeNumberPhone(newNumberPhone, userId))
           setNumberPhoneOk(true)
-          accessChangePassword()
+          setTimeout(() => {
+            setNumberPhoneOk(false)
+          }, 3000)
           return
         }
       }

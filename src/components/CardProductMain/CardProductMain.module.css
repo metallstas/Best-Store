@@ -4,6 +4,7 @@
   width: min-content;
   padding: 5px;
   display: flex;
+  cursor: pointer;
 }
 
 .cardMain img {

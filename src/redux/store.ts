@@ -1,3 +1,4 @@
+import { IThemeState, themeReducer } from './redusers/themeReducer';
 import { favoritesReducer, IFavoritesReducer } from './redusers/favoritesReducer';
 import { basketReducer, IBasketReducer } from './redusers/basketReducer';
 import { authReducer, IAuthReducer } from './redusers/authReducer';
@@ -18,6 +19,7 @@ export interface IState {
   authReducer: IAuthReducer
   basketReducer: IBasketReducer
   favoritesReducer: IFavoritesReducer
+  themeReducer: IThemeState
 }
 
 export const store = createStore(
@@ -27,7 +29,8 @@ export const store = createStore(
     headerReducer,
     authReducer,
     basketReducer,
-    favoritesReducer
+    favoritesReducer,
+    themeReducer,
   }),
   composeWithDevTools(applyMiddleware(thunk))
 )

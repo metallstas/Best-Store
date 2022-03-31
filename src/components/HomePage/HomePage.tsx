@@ -14,6 +14,7 @@ export const HomePage = () => {
   const newProduct = useSelector(
     (state: IState) => state.productsCategoryReducer.newProduct
   )
+  const currentTheme = useSelector((state: IState) => state.themeReducer.currentTheme)
 
   const showNewProducts = (category: string) => {
     return newProduct.products.map((product: IProduct) => {
@@ -38,12 +39,12 @@ export const HomePage = () => {
   }, [])
 
   return (
-    <section>
+    <section style={{background: currentTheme.background}}>
       {newProduct ? (
         <div className={cls.container}>
           <NavLink to='/electronics/ssd' className={cls.img}>
             {newProduct.images.imgElectronics ? (
-              <img src={newProduct.images.imgElectronics} />
+              <img className={cls.imgElectronics} src={newProduct.images.imgElectronics} />
             ) : null}
           </NavLink>
           <div className={cls.nameImage}>

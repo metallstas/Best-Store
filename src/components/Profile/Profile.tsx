@@ -3,6 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { goOutProfile } from '../../redux/actions/authAction'
 import { clearBasket } from '../../redux/actions/basketAction'
+import { clearFavorites } from '../../redux/actions/favoritesAction'
 import cls from './Profile.module.css'
 
 export const Profile = () => {
@@ -11,6 +12,7 @@ export const Profile = () => {
 
   const clickToLogOut = () => {
     dispatch(clearBasket())
+    dispatch(clearFavorites())
     dispatch(goOutProfile())
     navigate('/')
   }

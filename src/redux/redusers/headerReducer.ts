@@ -30,15 +30,15 @@ export const headerReducer = (state = defaultState, action: any) => {
   }
 
   if (action.type === ACTIONS.SHOW_LOGIN) {
-    return { ...state, showLogin: action.showLogin}
+    return { ...state, showLogin: action.showLogin }
   }
 
   if (action.type === ACTIONS.SHOW_REGISTRATION) {
-    return { ...state, showRegistration: action.showRegistration}
+    return { ...state, showRegistration: action.showRegistration }
   }
 
   if (action.type === ACTIONS.CONFIRM_REGISTRATION) {
-    return { ...state, isConfirmRegister: action.isConfirmRegister}
+    return { ...state, isConfirmRegister: action.isConfirmRegister }
   }
 
   return state

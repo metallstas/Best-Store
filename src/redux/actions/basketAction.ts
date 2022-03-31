@@ -2,12 +2,12 @@ import { Dispatch } from 'redux'
 import { IProduct } from '../redusers/productsCategoryReducer'
 import { ACTIONS } from './../constans'
 
-const basket = (basketProducts: IProduct[]) => {
+export const basket = (basketProducts: IProduct[]) => {
   return { type: ACTIONS.GET_PRODUCTS_BASKET, basketProducts }
 }
 
-export const changeCountPlus = (id:string, count: number) => {
-  return {type: ACTIONS.CHANGE_COUNT_PLUS, id, count}
+export const changeCountPlus = (id: string, count: number) => {
+  return { type: ACTIONS.CHANGE_COUNT_PLUS, id, count }
 }
 
 export const clearBasket = () => {
@@ -21,9 +21,10 @@ export const deleteProductBasket = (id: string) => {
 export const fetchGetBasketProducts = (userId: string) => {
   return async (dispatch: Dispatch) => {
     if (userId) {
+      const basketLocal = localStorage.getItem('basket')
       const response = await fetch('http://localhost:3005/basket/' + userId)
       const data = await response.json()
-      dispatch(basket(data.basketProducts))
+      dispatch(basket(basketLocal ? basketLocal : data.basketProducts))
     }
   }
 }
@@ -37,7 +38,7 @@ const fetchBasketUser = async (userId: string) => {
 const fetchProductById = async (id: string) => {
   const resp = await fetch(`http://localhost:3005/products/` + id)
   const data = await resp.json()
-  return {...data, count: 1}
+  return { ...data, count: 1 }
 }
 
 export const fetchPostBasketProducts = (id: string, userId: string) => {
@@ -56,7 +57,6 @@ export const fetchPostBasketProducts = (id: string, userId: string) => {
     })
 
     const data = await resp.json()
-    // dispatch(createCountProduct({id: +id, count: 1}))
 
     dispatch(basket(data.basketProducts))
   }
@@ -78,5 +78,3 @@ export const fetchPUTBasket = (id: string, userId: string) => {
     })
   }
 }
-
-

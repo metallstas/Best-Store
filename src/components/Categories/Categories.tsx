@@ -11,11 +11,15 @@ export const Categories = () => {
   const categories = useSelector(
     (state: IState) => state.categoriesReducer.categories
   )
+  const currentTheme = useSelector((state: IState) => state.themeReducer.currentTheme)
+  const isDark = useSelector((state: IState) => state.themeReducer.isDark)
+
   useEffect(() => {
     dispatch(fetchCategories())
   }, [])
+
   return (
-    <div className={cls.categories}>
+    <div style={{background: isDark ? currentTheme.backgroundFooter : '#fff'}} className={cls.categories}>
       <ul>
         {categories.length ? (
           categories.map((item) => {
