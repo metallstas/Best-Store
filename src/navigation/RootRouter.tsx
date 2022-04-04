@@ -12,14 +12,14 @@ import { Profile } from '../components/Profile/Profile'
 import { ProfileData } from '../components/Profile/ProfileData/ProfileData'
 import { ProfileDiscount } from '../components/Profile/ProfileDiscount/ProfileDiscount'
 import { init } from '../redux/actions/authAction'
-import { initTheme } from '../redux/actions/themeAction'
+import { fetchInitTheme } from '../redux/actions/themeAction'
 
 export const RootRouter = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(init())
-    dispatch(initTheme())
+    dispatch(fetchInitTheme())
   }, [])
 
   return (

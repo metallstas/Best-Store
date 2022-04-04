@@ -56,6 +56,7 @@ export const CardProductMain = ({
   }
 
   const productCategory = category.split(' ').join('')
+  
   const onClick = () => {
     window.scrollTo(0, 0)
     navigate(`/${productCategory}/${subcategory}/${id}`)

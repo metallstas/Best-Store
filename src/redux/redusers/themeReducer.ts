@@ -39,7 +39,6 @@ const defaultState: IThemeState = {
 
 export const themeReducer = (state = defaultState, action: any) => {
   if (action.type === ACTIONS.CHANGE_IS_DARK) {
-    localStorage.setItem('isDark', `${!state.isDark}`)
     return {
       isDark: !state.isDark,
       currentTheme: !state.isDark ? themeDark : themeLight,
@@ -47,12 +46,9 @@ export const themeReducer = (state = defaultState, action: any) => {
   }
 
   if (action.type === ACTIONS.INIT_THEME) {
-    const isDark = localStorage.getItem('isDark')
-    const theme = isDark ? JSON.parse(isDark) : false
-
     return {
-      isDark: theme,
-      currentTheme: theme ? themeDark : themeLight,
+      isDark: action.theme,
+      currentTheme: action.theme ? themeDark : themeLight,
     }
   }
 

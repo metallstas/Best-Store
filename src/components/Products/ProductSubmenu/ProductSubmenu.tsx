@@ -9,7 +9,7 @@ import { fetchProductsSubcategory } from '../../../redux/actions/productCategory
 import { IProduct } from '../../../redux/redusers/productsCategoryReducer'
 import { IState } from '../../../redux/store'
 import cls from './ProductSubmenu.module.css'
-import { currentCategory, currenTextSubmenu } from '../../../redux/constans'
+import { getCurrentCategory, getCurrentTextSubmenu } from '../../../redux/constans'
 import { CardProduct } from '../../CardProduct/CardProduct'
 import { Loading } from '../../Loading/Loading'
 import { Sort } from '../../Sort/Sort'
@@ -26,10 +26,10 @@ export const ProductSubmenu = () => {
   const textSubmenu = locationItem[2]
 
   useEffect(() => {
-    dispatch(fetchProductsSubcategory(currentCategory(category), textSubmenu))
+    dispatch(fetchProductsSubcategory(getCurrentCategory(category), textSubmenu))
   }, [textSubmenu, category])
 
-  const ClickctiveCategory = () => {
+  const onClickActiveCategory = () => {
     dispatch(activeCategory(category))
   }
 
@@ -41,11 +41,11 @@ export const ProductSubmenu = () => {
         <div className={cls.naviBlock}>
           <div>
             <NavLink to='/'>Главная &#62;</NavLink>
-            <NavLink to={`/${productCategory}`} onClick={ClickctiveCategory}>
-              {textCategory(currentCategory(category))} &#62;
+            <NavLink to={`/${productCategory}`} onClick={onClickActiveCategory}>
+              {textCategory(getCurrentCategory(category))} &#62;
             </NavLink>
             <span className={cls.activeCategory}>
-              {currenTextSubmenu(textSubmenu)}
+              {getCurrentTextSubmenu(textSubmenu)}
             </span>
           </div>
           <Sort />

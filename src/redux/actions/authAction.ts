@@ -81,7 +81,7 @@ export const fetchGetUser = (userId: string) => {
 }
 
 export const fetchChangeEmail = (email: string, userId: string) => {
-  return async (dispatch: Dispatch) => {
+  return async () => {
     if (userId) {
       localStorage.setItem('email', email)
       const user = await getUser(userId)
@@ -92,13 +92,12 @@ export const fetchChangeEmail = (email: string, userId: string) => {
         },
         body: JSON.stringify({ ...user, email }),
       })
-      const data = await resp.json()
     }
   }
 }
 
 export const fetchChangeNumberPhone = (numberPhone: string, userId: string) => {
-  return async (dispatch: Dispatch) => {
+  return async () => {
     const user = await getUser(userId)
     const resp = await fetch(`http://localhost:3005/profile/${userId}`, {
       method: 'PUT',
@@ -107,7 +106,6 @@ export const fetchChangeNumberPhone = (numberPhone: string, userId: string) => {
       },
       body: JSON.stringify({ ...user, numberPhone }),
     })
-    const data = await resp.json()
   }
 }
 

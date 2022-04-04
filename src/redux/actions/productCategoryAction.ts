@@ -2,7 +2,7 @@ import { Dispatch } from 'redux'
 import { ACTIONS } from '../constans'
 import { INewProduct, IProduct } from '../redusers/productsCategoryReducer'
 
-export const productsCategory = (products: IProduct[]) => {
+export const setProductsCategory = (products: IProduct[]) => {
   return { type: ACTIONS.PRODUCTS_CATEGORY, products }
 }
 
@@ -52,7 +52,7 @@ export const fetchProductsSubcategory = (
       `http://localhost:3005/products?category=${category}&subcategory=${subcategory}`
     )
     const data = await resp.json()
-    dispatch(productsCategory(data))
+    dispatch(setProductsCategory(data))
   }
 }
 
@@ -62,7 +62,7 @@ export const fetchProductsCategory = (category: string) => {
       `http://localhost:3005/products?category=${category}`
     )
     const data = await resp.json()
-    dispatch(productsCategory(data))
+    dispatch(setProductsCategory(data))
   }
 }
 
@@ -70,7 +70,7 @@ export const fetchSearchProducts = (text: string) => {
   return async (dispatch: Dispatch) => {
     const resp = await fetch(`http://localhost:3005/products?q=${text}`)
     const data = await resp.json()
-    dispatch(productsCategory(data))
+    dispatch(setProductsCategory(data))
   }
 }
 

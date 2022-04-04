@@ -18,7 +18,7 @@ import { CSSTransition } from 'react-transition-group'
 import { HeaderMenu } from '../HeaderMenu/HeaderMenu'
 import { Login } from '../Login/Login'
 import cls from './Header.module.css'
-import { changeTheme } from '../../redux/actions/themeAction'
+import { fetchChangeTheme } from '../../redux/actions/themeAction'
 
 export const Header = () => {
   const navigate = useNavigate()
@@ -76,7 +76,7 @@ export const Header = () => {
 
   const onClickChangeTheme = () => {
     dispatch(closeMenu())
-    dispatch(changeTheme())
+    dispatch(fetchChangeTheme())
   }
 
   const onClickShowLogin = () => {

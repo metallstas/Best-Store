@@ -1,10 +1,10 @@
-import { Spiner } from '../Spiner/Spiner'
+import { Spinner } from '../Spinner/Spinner'
 import cls from './Loading.module.css'
 
 export const Loading = () => {
   return (
     <div className={cls.loadingBlock}>
-      <Spiner />
+      <Spinner />
       <p>Loading...</p>
     </div>
   )

@@ -1,5 +1,5 @@
-import cls from './Spiner.module.css'
+import cls from './Spinner.module.css'
 
-export const Spiner = () => {
+export const Spinner = () => {
   return <img className={cls.spiner} src='/images/loading.png' alt='img'/>
 }

@@ -19,7 +19,7 @@ export const BasketProducts = () => {
     (state: IState) => state.themeReducer.currentTheme
   )
 
-  const totalSum = () => {
+  const getTotalSum = () => {
     if (products) {
       const total = products.reduce((acc: number, current: IBasketProduct) => {
         return acc + +current.price * current.count
@@ -35,7 +35,7 @@ export const BasketProducts = () => {
   }, [userId])
 
   useEffect(() => {
-    totalSum()
+    getTotalSum()
   }, [products])
 
   return (

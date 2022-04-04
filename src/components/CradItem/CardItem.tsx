@@ -6,7 +6,7 @@ import {
   textCategory,
 } from '../../redux/actions/categoriesAction'
 import { fetchProductId } from '../../redux/actions/productCategoryAction'
-import { currenTextSubmenu } from '../../redux/constans'
+import { getCurrentTextSubmenu } from '../../redux/constans'
 import { IState } from '../../redux/store'
 import { Basket } from '../Basket/Basket'
 import { SimilarProducts } from '../SimilarProducts/SimilarProducts'
@@ -39,7 +39,7 @@ export const CardItem = () => {
             {textCategory(productItem.category)} &#62;
           </NavLink>
           <NavLink to={`/${productCategory}/${productItem.subcategory}/`}>
-            {currenTextSubmenu(productItem.subcategory)}
+            {getCurrentTextSubmenu(productItem.subcategory)}
           </NavLink>
         </div>
       ) : null}
