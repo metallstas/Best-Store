@@ -6,7 +6,7 @@ import { IProduct } from '../../redux/redusers/productsCategoryReducer'
 import { IState } from '../../redux/store'
 import { CardProductMain } from '../CardProductMain/CardProductMain'
 import { Loading } from '../Loading/Loading'
-import { Spiner } from '../Spiner/Spiner'
+import { Spinner } from '../Spinner/Spinner'
 import cls from './HomePage.module.css'
 
 export const HomePage = () => {
@@ -56,14 +56,14 @@ export const HomePage = () => {
                 {showNewProducts('electronics')}
               </div>
             ) : (
-              <Spiner />
+              <Spinner />
             )}
           </div>
           <NavLink to="/men'sclothing/jackets" className={cls.img}>
             {newProduct.images.imgMens ? (
               <img src={newProduct.images.imgMens} />
             ) : (
-              <Spiner />
+              <Spinner />
             )}
           </NavLink>
           <div className={cls.nameImage}>
@@ -76,7 +76,7 @@ export const HomePage = () => {
                 {showNewProducts("men's clothing")}
               </div>
             ) : (
-              <Spiner />
+              <Spinner />
             )}
           </div>
         </div>

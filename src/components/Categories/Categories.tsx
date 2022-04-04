@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { fetchCategories, textCategory } from '../../redux/actions/categoriesAction'
 import { IState } from '../../redux/store'
-import { Spiner } from '../Spiner/Spiner'
+import { Spinner } from '../Spinner/Spinner'
 import cls from './Categories.module.css'
 
 export const Categories = () => {
@@ -31,7 +31,7 @@ export const Categories = () => {
             )
           })
         ) : (
-          <Spiner />
+          <Spinner />
         )}
       </ul>
     </div>

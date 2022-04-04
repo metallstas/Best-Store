@@ -520,123 +520,14 @@
     {
       "id": "b0ee16b3ed35",
       "email": "metallstas@mail.ru",
-      "basketProducts": [
-        {
-          "category": "electronics",
-          "description": "USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system",
-          "id": 10,
-          "image": "https://pngimg.com/uploads/hard_disc/hard_disc_PNG102038.png",
-          "price": 64,
-          "rating": {
-            "rate": 3.3,
-            "count": 203
-          },
-          "title": "WD 4TB Elements Portable External Hard Drive - USB 3.0",
-          "subcategory": "hdd",
-          "count": 1
-        },
-        {
-          "category": "men's clothing",
-          "description": "Stash your laptop (up to 15 inches) in the padded sleeve, your everyday. Lorem ",
-          "id": 3,
-          "image": "https://pngimg.com/uploads/backpack/backpack_PNG6365.png",
-          "price": 103,
-          "rating": {
-            "rate": 3.2,
-            "count": 120
-          },
-          "title": "Briefcase Drawing Handbag",
-          "subcategory": "bags",
-          "count": 1
-        },
-        {
-          "category": "electronics",
-          "description": "Design with high capacity, 3-year manufacturer's limited warranty",
-          "id": 17,
-          "image": "https://pngimg.com/uploads/hard_disc/Hard%20disc%20PNG,%20hard%20drive%20PNG%20images%20free%20download,%20HDD%20PNG_PNG12052.png",
-          "price": 35,
-          "rating": {
-            "rate": 2.2,
-            "count": 140
-          },
-          "title": "WD 3TB Gaming Drive Works",
-          "subcategory": "hdd",
-          "count": 1
-        }
-      ]
+      "basketProducts": []
     }
   ],
   "favorites": [
     {
       "id": "b0ee16b3ed35",
       "email": "metallstas@mail.ru",
-      "productsFavorites": [
-        {
-          "category": "electronics",
-          "description": "21. 5 inches Full HD (1920 x 1080) widescreen IPS display And Radeon free Sync technology. No compatibility for VESA Mount Refresh Rate: 75Hz - Using HDMI port Zero-frame design | ultra-thin | 4ms response time | IPS panel Aspect ratio - 16: 9. Color Supported - 16. 7 million colors. Brightness - 250 nit Tilt angle -5 degree to 15 degree. Horizontal viewing angle-178 degree. Vertical viewing angle-178 degree 75 hertz",
-          "id": 14,
-          "image": "https://i01.appmifile.com/webfile/globalimg/products/m/mi-tv-4x-55/overview-1_TV.png",
-          "price": 599,
-          "rating": {
-            "rate": 2.9,
-            "count": 250
-          },
-          "title": "Xiaomi SB220Q bi 21.5 inches Full HD (1920 x 1080) IPS Ultra-Thin",
-          "subcategory": "tv"
-        },
-        {
-          "category": "electronics",
-          "description": "Design with high capacity, 3-year manufacturer's limited warranty",
-          "id": 17,
-          "image": "https://pngimg.com/uploads/hard_disc/Hard%20disc%20PNG,%20hard%20drive%20PNG%20images%20free%20download,%20HDD%20PNG_PNG12052.png",
-          "price": 35,
-          "rating": {
-            "rate": 2.2,
-            "count": 140
-          },
-          "title": "WD 3TB Gaming Drive Works",
-          "subcategory": "hdd"
-        },
-        {
-          "category": "electronics",
-          "description": "49 INCH SUPER ULTRAWIDE 32:9 CURVED GAMING MONITOR with dual 27 inch screen side by side QUANTUM DOT (QLED) TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag",
-          "id": 20,
-          "image": "https://images.samsung.com/is/image/samsung/p6pim/ru/ue32n5000auxru/gallery/ru-hdtv-n4000-global-364907-ue32n5000auxru-354846889?$720_576_PNG$",
-          "price": 399.99,
-          "rating": {
-            "rate": 2.2,
-            "count": 140
-          },
-          "title": "LG 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED ",
-          "subcategory": "tv"
-        },
-        {
-          "category": "electronics",
-          "description": "TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag",
-          "id": 21,
-          "image": "https://www.pngall.com/wp-content/uploads/5/Samsung-TV-PNG.png",
-          "price": 456,
-          "rating": {
-            "rate": 2.2,
-            "count": 140
-          },
-          "title": "Sumsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED ",
-          "subcategory": "tv"
-        },
-        {
-          "category": "jewelery",
-          "description": "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
-          "id": 22,
-          "image": "https://www.pngall.com/wp-content/uploads/7/Silver-Bracelet.png",
-          "price": 95,
-          "rating": {
-            "rate": 4.6,
-            "count": 400
-          },
-          "title": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
-          "subcategory": "bracelet"
-        }
-      ]
+      "productsFavorites": []
     }
   ]
 }

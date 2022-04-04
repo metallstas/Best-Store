@@ -4,7 +4,7 @@ import { showSearch } from '../../redux/actions/headeAction'
 import { setIdProduct } from '../../redux/actions/productCategoryAction'
 import { IState } from '../../redux/store'
 import { Basket } from '../Basket/Basket'
-import { Spiner } from '../Spiner/Spiner'
+import { Loading } from '../Loading/Loading'
 import cls from './CardProduct.module.css'
 
 interface IProductCard {
@@ -48,7 +48,7 @@ export const CardProduct = ({
       id={id}
     >
       <div className={cls.productCard} onClick={() => getInfoProduct(id)}>
-        {title ? <img src={image} alt='img' /> : <Spiner />}
+        {title ? <img src={image} alt='img' /> : <Loading />}
         <p className={cls.title}>{title}</p>
       </div>
       <div>

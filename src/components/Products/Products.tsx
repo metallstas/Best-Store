@@ -15,7 +15,7 @@ import cls from './Products.module.css'
 import { CardProduct } from '../CardProduct/CardProduct'
 import { Loading } from '../Loading/Loading'
 import { closeMenu } from '../../redux/actions/headeAction'
-import { currentCategory } from '../../redux/constans'
+import { getCurrentCategory } from '../../redux/constans'
 import { NoProducts } from '../NoProducts/NoProducts'
 import { Sort } from '../Sort/Sort'
 
@@ -39,7 +39,7 @@ export const Products = () => {
 
   useEffect(() => {
     if (category) {
-      dispatch(fetchProductsCategory(currentCategory(category)))
+      dispatch(fetchProductsCategory(getCurrentCategory(category)))
       dispatch(activeCategory(category))
     }
   }, [category])
@@ -59,7 +59,7 @@ export const Products = () => {
                   Главная &#62;
                 </NavLink>
                 <span className={cls.activeCategory}>
-                  {textCategory(currentCategory(category))}
+                  {textCategory(getCurrentCategory(category))}
                 </span>
               </div>
               <Sort />

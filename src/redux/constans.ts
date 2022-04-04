@@ -35,7 +35,7 @@ export const ACTIONS = {
   ADD_BASKET_LOCAL: 'ADD_BASKET_LOCAL'
 }
 
-export const currenTextSubmenu = (textSubmenu: string) => {
+export const getCurrentTextSubmenu = (textSubmenu: string) => {
   if (textSubmenu === 'hdd') {
     return 'Жесткие диски'
   }
@@ -69,7 +69,7 @@ export const currenTextSubmenu = (textSubmenu: string) => {
   }
 }
 
-export const currentCategory = (category: string) => {
+export const getCurrentCategory = (category: string) => {
   if (category === "men'sclothing") {
     return "men's clothing"
   }
