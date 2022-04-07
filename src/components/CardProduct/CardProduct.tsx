@@ -45,7 +45,7 @@ export const CardProduct = ({
     <div
       className={cls.product}
       onMouseOver={(e) => onMouseOverCard(+e.currentTarget.id)}
-      id={'id'}
+      id={id.toString()}
     >
       <div className={cls.productCard} onClick={() => getInfoProduct(id)}>
         {title ? <img src={image} alt='img' /> : <Loading />}
