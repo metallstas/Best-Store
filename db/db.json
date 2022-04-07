@@ -445,7 +445,7 @@
   "profile": [
     {
       "id": "b0ee16b3ed35",
-      "email": "metallstas@mail.ru",
+      "email": "stas@stas.ru",
       "password": "Stas1234",
       "numberPhone": "+375336406397"
     }
@@ -520,14 +520,71 @@
     {
       "id": "b0ee16b3ed35",
       "email": "metallstas@mail.ru",
-      "basketProducts": []
+      "basketProducts": [
+        {
+          "category": "electronics",
+          "description": "TECHNOLOGY, HDR support and factory calibration provides stunningly realistic and accurate color and contrast 144HZ HIGH REFRESH RATE and 1ms ultra fast response time work to eliminate motion blur, ghosting, and reduce input lag",
+          "id": 21,
+          "image": "https://www.pngall.com/wp-content/uploads/5/Samsung-TV-PNG.png",
+          "price": 456,
+          "rating": {
+            "rate": 2.2,
+            "count": 140
+          },
+          "title": "Sumsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED ",
+          "subcategory": "tv",
+          "count": 1
+        },
+        {
+          "category": "electronics",
+          "description": "USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system",
+          "id": 10,
+          "image": "https://pngimg.com/uploads/hard_disc/hard_disc_PNG102038.png",
+          "price": 64,
+          "rating": {
+            "rate": 3.3,
+            "count": 203
+          },
+          "title": "WD 4TB Elements Portable External Hard Drive - USB 3.0",
+          "subcategory": "hdd",
+          "count": 1
+        },
+        {
+          "category": "jewelery",
+          "description": "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...",
+          "id": 26,
+          "image": "https://freepngimg.com/thumb/ring/34055-9-silver-ring-clipart.png",
+          "price": 170,
+          "rating": {
+            "rate": 4.2,
+            "count": 420
+          },
+          "title": "White Gold Plated Princess",
+          "subcategory": "rings",
+          "count": 1
+        }
+      ]
     }
   ],
   "favorites": [
     {
       "id": "b0ee16b3ed35",
       "email": "metallstas@mail.ru",
-      "productsFavorites": []
+      "productsFavorites": [
+        {
+          "category": "jewelery",
+          "description": "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...",
+          "id": 26,
+          "image": "https://freepngimg.com/thumb/ring/34055-9-silver-ring-clipart.png",
+          "price": 170,
+          "rating": {
+            "rate": 4.2,
+            "count": 420
+          },
+          "title": "White Gold Plated Princess",
+          "subcategory": "rings"
+        }
+      ]
     }
   ]
 }

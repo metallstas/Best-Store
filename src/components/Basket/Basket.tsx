@@ -11,7 +11,7 @@ import {
 
 
 interface IBasket {
-  id: string
+  id: number
 }
 
 export const Basket = ({ id }: IBasket) => {
@@ -25,12 +25,12 @@ export const Basket = ({ id }: IBasket) => {
   const userId = useSelector((state: IState) => state.authReducer.id)
 
   const isProductBasket = basketProducts
-    ? basketProducts.some((el: IProduct) => el.id.toString() === id.toString())
+    ? basketProducts.some((el: IProduct) => el.id === id)
     : null
 
   const isfavoriteProducts = favoriteProducts
     ? favoriteProducts.some(
-        (el: IProduct) => el.id.toString() === id.toString()
+        (el: IProduct) => el.id === id
       )
     : null
 

@@ -3,7 +3,7 @@ import { ACTIONS } from '../constans'
 export interface IProduct {
   category: string
   description: string
-  id: string
+  id: number
   image: string
   price: number
   rating: { rate: number; count: number }
@@ -18,7 +18,7 @@ export interface INewProduct {
 
 export interface IProductCategory {
   products: IProduct[]
-  idProduct: string
+  idProduct: number
   newProduct: INewProduct
   searchText: string
   subcategory: string[]
@@ -27,14 +27,14 @@ export interface IProductCategory {
 
 const defaultState: IProductCategory = {
   products: [],
-  idProduct: '',
+  idProduct: 0,
   newProduct: { images: { imgElectronics: '', imgMens: '' }, products: [] },
   searchText: '',
   subcategory: [],
   productId: {
     category: '',
     description: '',
-    id: '',
+    id: 0,
     image: '',
     price: 0,
     rating: { rate: 0, count: 0 },

@@ -6,7 +6,7 @@ export const basket = (basketProducts: IProduct[]) => {
   return { type: ACTIONS.GET_PRODUCTS_BASKET, basketProducts }
 }
 
-export const changeCountPlus = (id: string, count: number) => {
+export const changeCountPlus = (id: number, count: number) => {
   return { type: ACTIONS.CHANGE_COUNT_PLUS, id, count }
 }
 
@@ -14,7 +14,7 @@ export const clearBasket = () => {
   return { type: ACTIONS.CLEAR_BASKET }
 }
 
-export const deleteProductBasket = (id: string) => {
+export const deleteProductBasket = (id: number) => {
   return { type: ACTIONS.DELETE_PRODUCT_BASKET, id }
 }
 
@@ -35,13 +35,13 @@ const fetchBasketUser = async (userId: string) => {
   return data
 }
 
-const fetchProductById = async (id: string) => {
+const fetchProductById = async (id: number) => {
   const resp = await fetch(`http://localhost:3005/products/` + id)
   const data = await resp.json()
   return { ...data, count: 1 }
 }
 
-export const fetchPostBasketProducts = (id: string, userId: string) => {
+export const fetchPostBasketProducts = (id: number, userId: string) => {
   return async (dispatch: Dispatch) => {
     const dataProduct = await fetchProductById(id)
     const user = await fetchBasketUser(userId)
@@ -62,7 +62,7 @@ export const fetchPostBasketProducts = (id: string, userId: string) => {
   }
 }
 
-export const fetchPUTBasket = (id: string, userId: string) => {
+export const fetchPUTBasket = (id: number, userId: string) => {
   return async (dispatch: Dispatch) => {
     dispatch(deleteProductBasket(id))
     const user = await fetchBasketUser(userId)

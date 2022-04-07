@@ -9,7 +9,7 @@ import { IState } from '../../redux/store'
 import cls from './CardProductMain.module.css'
 
 interface ICardProductMain {
-  id: string
+  id: number
   title: string
   image: string
   price: number

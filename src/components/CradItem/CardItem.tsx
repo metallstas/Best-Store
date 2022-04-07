@@ -13,18 +13,18 @@ import { SimilarProducts } from '../SimilarProducts/SimilarProducts'
 import cls from './CardItem.module.css'
 
 export const CardItem = () => {
-  const {id} = useParams()
+  const { id } = useParams()
   const productItem = useSelector(
     (state: IState) => state.productsCategoryReducer.productId
   )
   const productCategory = productItem.category.split(' ').join('')
   const dispatch = useDispatch()
-  
+
   useEffect(() => {
     if (id) {
       dispatch(fetchProductId(id))
     }
-  }, [id, dispatch])
+  }, [id])
 
   const onClickActiveCategory = () => {
     dispatch(activeCategory(productItem.category))
@@ -50,7 +50,7 @@ export const CardItem = () => {
         <div className={cls.descriptionBlock}>
           <h2 className={cls.title}>{productItem.title}</h2>
           <p className={cls.price}>{productItem.price}$</p>
-          <Basket id={id ? id : ''}/>
+          {id ? <Basket id={+id} /> : null}
           <div className={cls.deliveryBlock}>
             <div>
               <img src='/images/delivery.png' alt='delivery' />

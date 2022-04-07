@@ -8,7 +8,7 @@ import { Loading } from '../Loading/Loading'
 import cls from './CardProduct.module.css'
 
 interface IProductCard {
-  id: string
+  id: number
   title: string
   image: string
   price: number
@@ -32,7 +32,7 @@ export const CardProduct = ({
   const productCategory = category.split(' ').join('')
 
   const navigate = useNavigate()
-  const getInfoProduct = (id: string) => {
+  const getInfoProduct = (id: number) => {
     dispatch(showSearch(false))
     navigate(`/${productCategory}/${subcategory}/${id}`)
   }
@@ -45,7 +45,7 @@ export const CardProduct = ({
     <div
       className={cls.product}
       onMouseOver={(e) => onMouseOverCard(+e.currentTarget.id)}
-      id={id}
+      id={'id'}
     >
       <div className={cls.productCard} onClick={() => getInfoProduct(id)}>
         {title ? <img src={image} alt='img' /> : <Loading />}
